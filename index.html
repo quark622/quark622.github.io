@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>集芳閣云搜-老书影音检索与私家档案</title>
+<meta name="description" content="集芳閣云搜聚合老书、旧唱片与地方影像的检索入口，覆盖浙闽粤三地古籍影印、民国期刊、黑胶曲目与口述录音，提供版本对照、可信度分层和体验指南，日期口径统一截至2026年11月8日。">
+<meta name="keywords" content="集芳閣云搜">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f4a3e'/%3E%3Cpath d='M16 44V22h6l6 10 6-10h6v22h-6V32l-6 9-6-9v12z' fill='%23e8dcc0'/%3E%3Ccircle cx='47' cy='24' r='4' fill='%23c9a227'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#22312b;
+  --ink-soft:#4a5a52;
+  --muted:#6d7a73;
+  --paper:#f7f4ec;
+  --paper-2:#efe9db;
+  --card:#fffdf7;
+  --line:#d8d0bd;
+  --brand:#2f4a3e;
+  --brand-2:#3f6353;
+  --accent:#c9a227;
+  --accent-soft:#f0e3b8;
+  --warn:#8a4b2a;
+  --radius:10px;
+  --radius-s:6px;
+  --shadow:0 2px 10px rgba(34,49,43,.08);
+  --shadow-h:0 6px 18px rgba(34,49,43,.14);
+  --fs-h1:clamp(1.7rem,3.4vw,2.6rem);
+  --fs-h2:clamp(1.25rem,2.1vw,1.6rem);
+  --fs-h3:1.06rem;
+  --space:clamp(14px,2vw,22px);
+  --ann-h:38px;
+  --head-h:64px;
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--ann-h) + var(--head-h) + 12px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.78;-webkit-font-smoothing:antialiased}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--serif);line-height:1.35;margin:0 0 .55em}
+h2{font-size:var(--fs-h2)}
+h3{font-size:var(--fs-h3)}
+p{margin:0 0 .8em}
+ul,ol{margin:0 0 .9em;padding-left:1.25em}
+li{margin-bottom:.32em}
+.wrap{width:min(1200px,94vw);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+/* 吸顶公告 */
+.ann{position:sticky;top:0;z-index:60;background:var(--brand);color:#efe9db;font-size:.82rem;min-height:var(--ann-h);display:flex;align-items:center}
+.ann .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-block:6px}
+.ann b{color:var(--accent-soft);letter-spacing:.06em;font-weight:600}
+.ann .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+.ann a{color:#fff;text-decoration:underline}
+/* 页头 */
+.head{position:sticky;top:var(--ann-h);z-index:55;background:rgba(247,244,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);min-height:var(--head-h)}
+.head .wrap{display:flex;align-items:center;gap:14px;min-height:var(--head-h);flex-wrap:wrap;padding-block:8px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;font-size:1.12rem;color:var(--ink);letter-spacing:.04em}
+.brand:hover{text-decoration:none}
+.brand svg{flex:none}
+.nav-main{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav-main a{padding:5px 9px;border-radius:var(--radius-s);font-size:.88rem;color:var(--ink-soft)}
+.nav-main a:hover,.nav-main a[aria-current]{background:var(--paper-2);color:var(--brand);text-decoration:none}
+.head-tools{display:flex;gap:8px;align-items:center}
+.search{display:flex;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:var(--radius-s);overflow:hidden}
+.search input{border:0;background:transparent;padding:7px 10px;font-size:.86rem;width:150px;color:var(--ink);font-family:var(--sans)}
+.search input:focus{outline:none}
+.search button{border:0;background:var(--brand-2);color:#fff;padding:8px 12px;font-size:.82rem;cursor:pointer;font-family:var(--sans)}
+.search button:hover{background:var(--brand)}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--card);border-radius:var(--radius-s);padding:6px 11px;font-size:.86rem;cursor:pointer;font-family:var(--sans);color:var(--ink)}
+.search-msg{font-size:.78rem;color:var(--warn);flex-basis:100%;display:none}
+.search-msg.on{display:block}
+/* 首屏 */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(900px 380px at 82% -10%,#dfe8dd 0%,transparent 62%),
+  linear-gradient(180deg,#f2eee1 0%,#f7f4ec 100%);border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(18px,3vw,40px);align-items:center;padding-block:clamp(30px,5vw,58px)}
+.hero-kicker{font-size:.8rem;letter-spacing:.16em;color:var(--brand-2);margin-bottom:10px}
+.hero h1{margin:0 0 14px;font-size:var(--fs-h1);letter-spacing:.02em}
+.hero-lead{max-width:34em;color:var(--ink-soft)}
+.hero-lead b{color:var(--ink)}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:9px 18px;border-radius:var(--radius-s);font-size:.9rem;border:1px solid var(--brand);background:var(--brand);color:#fff}
+.btn:hover{background:var(--brand-2);text-decoration:none;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--brand)}
+.btn.ghost:hover{background:var(--paper-2)}
+.btn{transition:transform .15s,background .15s}
+.hero-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px;border-top:1px dashed var(--line);padding-top:16px}
+.hero-stats div{font-size:.82rem;color:var(--muted)}
+.hero-stats b{display:block;font-family:var(--serif);font-size:1.3rem;color:var(--ink)}
+.hero-art{position:relative;aspect-ratio:1/1;max-width:380px;justify-self:center;width:100%}
+/* 布局 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:clamp(18px,3vw,34px);padding-block:clamp(26px,4vw,48px)}
+main>section{margin-bottom:clamp(30px,4.4vw,56px)}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px;border-bottom:2px solid var(--brand);padding-bottom:8px}
+.sec-head h2{margin:0}
+.sec-head .sub{font-size:.8rem;color:var(--muted)}
+.sec-head .more{margin-left:auto;font-size:.82rem}
+/* 卡片网格 */
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h)}
+.card h3{margin-bottom:.35em}
+.card .meta{font-size:.76rem;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+.card p{font-size:.9rem;color:var(--ink-soft);margin-bottom:.6em}
+.tag{display:inline-block;font-size:.74rem;padding:2px 8px;border-radius:99px;background:var(--paper-2);color:var(--brand-2);border:1px solid var(--line);margin:2px 4px 2px 0}
+.tag.gold{background:var(--accent-soft);border-color:#e0cf94;color:#6b530f}
+.card img{width:100%;height:132px;object-fit:cover;border-radius:var(--radius-s);margin-bottom:10px}
+/* 紧凑列表 */
+.list-plain{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.list-plain li{display:grid;grid-template-columns:74px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:10px 2px;border-bottom:1px solid var(--line);margin:0;font-size:.9rem}
+.list-plain time{font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.list-plain .src{font-size:.74rem;color:var(--muted)}
+.list-plain a{color:var(--ink)}
+.list-plain a:hover{color:var(--brand-2)}
+/* 分类索引 */
+.cat-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.cat-index a{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-s);padding:10px 12px;font-size:.9rem;color:var(--ink);transition:background .15s,transform .15s}
+.cat-index a span{display:block;font-size:.74rem;color:var(--muted);font-weight:400}
+.cat-index a:hover{background:var(--paper-2);text-decoration:none;transform:translateY(-2px)}
+/* 深度解析 */
+.deep{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,3vw,30px);box-shadow:var(--shadow)}
+.deep h3{margin-top:1.3em;padding-left:10px;border-left:4px solid var(--accent)}
+.deep h3:first-of-type{margin-top:.4em}
+.deep p{font-size:.96rem;color:#33443c}
+.deep .pull{background:var(--paper-2);border-left:4px solid var(--brand);padding:12px 16px;border-radius:0 var(--radius-s) var(--radius-s) 0;font-family:var(--serif);font-size:1rem;color:var(--ink);margin:16px 0}
+.deep .pull cite{display:block;font-size:.78rem;color:var(--muted);font-style:normal;margin-top:6px;font-family:var(--sans)}
+.check-table{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0 16px}
+.check-table th,.check-table td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+.check-table th{background:var(--paper-2);font-weight:600}
+/* 步骤 */
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{counter-increment:s;position:relative;padding:14px 16px 14px 54px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);font-size:.9rem}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:14px;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-family:var(--serif);font-size:.86rem;display:flex;align-items:center;justify-content:center}
+.steps li b{display:block;font-family:var(--serif);font-size:.98rem;margin-bottom:2px}
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.compare>div{padding:14px 16px;background:var(--card);font-size:.88rem}
+.compare>div:first-child{border-right:1px solid var(--line);background:#fbf8ef}
+.compare h4{margin:0 0 8px;font-family:var(--serif);font-size:.95rem;color:var(--brand);letter-spacing:.04em}
+.compare ul{margin:0;padding-left:1.1em}
+/* 引语卡 */
+.quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space)}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;position:relative;font-size:.9rem;box-shadow:var(--shadow)}
+.quote::before{content:"“";position:absolute;top:-4px;left:10px;font-family:var(--serif);font-size:2.4rem;color:var(--accent);opacity:.5}
+.quote p{margin:6px 0 .5em;color:var(--ink-soft)}
+.quote footer{font-size:.76rem;color:var(--muted)}
+.quote .stars{color:var(--accent);font-size:.8rem;letter-spacing:1px}
+/* FAQ */
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-s);padding:0;margin-bottom:8px;overflow:hidden}
+details[open]{box-shadow:var(--shadow)}
+summary{cursor:pointer;padding:12px 40px 12px 14px;font-weight:600;font-size:.92rem;position:relative;list-style:none;font-family:var(--serif)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--brand-2);font-weight:400}
+details[open] summary::after{content:"－"}
+details .ans{padding:0 16px 14px;font-size:.89rem;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:10px;margin-top:2px}
+/* 侧栏 */
+aside.rail{display:grid;gap:var(--space);align-content:start;position:sticky;top:calc(var(--ann-h) + var(--head-h) + 14px);align-self:start}
+.rail-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+.rail-box h2,.rail-box h3{font-size:.95rem;letter-spacing:.05em;margin-bottom:.6em;border-bottom:1px solid var(--line);padding-bottom:6px}
+.rail-box ul{list-style:none;padding:0;margin:0;font-size:.86rem}
+.rail-box li{padding:5px 0;border-bottom:1px dashed var(--line);margin:0}
+.rail-box li:last-child{border-bottom:0}
+.rail-box li a{color:var(--ink-soft)}
+.rail-box li a:hover{color:var(--brand-2)}
+.rail-box li a .cnt{float:right;color:var(--muted);font-size:.74rem}
+.rail-box p{font-size:.84rem;color:var(--ink-soft);margin:0}
+/* 页脚 */
+.foot{background:var(--brand);color:#d9e0d6;margin-top:20px;padding-block:clamp(26px,4vw,44px);font-size:.86rem}
+.foot .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(16px,3vw,32px)}
+.foot h3{font-size:.92rem;color:#fff;margin-bottom:.6em;letter-spacing:.06em}
+.foot a{color:#cfd9cd}
+.foot a:hover{color:#fff}
+.foot ul{list-style:none;padding:0;margin:0}
+.foot li{padding:3px 0}
+.foot .fbrand{font-family:var(--serif);font-size:1.1rem;color:#fff;margin-bottom:6px}
+.foot .note{border-top:1px solid rgba(255,255,255,.18);margin-top:24px;padding-top:14px;font-size:.78rem;color:#b7c4b4;line-height:1.7}
+.foot .note p{margin:0 0 .4em}
+/* 回到顶部 */
+.totop{position:fixed;right:16px;bottom:18px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--brand);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow-h);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:70;font-size:.9rem;font-family:var(--serif)}
+.totop.on{opacity:1;visibility:visible;transform:none}
+/* 滚动高亮 */
+.nav-main a.active{background:var(--brand);color:#fff}
+/* 响应式 */
+@media(max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  aside.rail{position:static;order:2;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-art{max-width:260px;order:-1;justify-self:start}
+  .cat-index{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .nav-main{display:none;order:4;flex-basis:100%;border-top:1px solid var(--line);padding-top:8px}
+  .nav-main.open{display:flex}
+  .menu-btn{display:inline-block}
+  .search input{width:110px}
+  .grid-3,.grid-2,.quotes,.cat-index,.foot .cols{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .compare>div:first-child{border-right:0;border-bottom:1px solid var(--line)}
+  .list-plain li{grid-template-columns:66px minmax(0,1fr);}
+  .list-plain .src{grid-column:2;font-size:.72rem}
+  aside.rail{grid-template-columns:1fr}
+  .deep{padding:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 公告条 -->
+<div class="ann" role="region" aria-label="站务公告">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <b>集芳閣云搜</b>
+    <span>11月7日上线「闽南歌仔册影印补录」第 4 批，共 37 册，含 1953 年厦门会文堂石印本 2 种。</span>
+    <a href="/#updates">查看更新清单</a>
+  </div>
+</div>
+
+<!-- 页头 -->
+<header class="head">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="集芳閣云搜 首页">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2f4a3e"/>
+        <path d="M16 44V22h6l6 10 6-10h6v22h-6V32l-6 9-6-9v12z" fill="#e8dcc0"/>
+        <circle cx="47" cy="24" r="4" fill="#c9a227"/>
+        <path d="M43 44h14" stroke="#e8dcc0" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span>集芳閣云搜</span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">栏目菜单</button>
+
+    <nav class="nav-main" id="mainNav" aria-label="主题导航">
+      <a href="/#overview">总览</a>
+      <a href="/#picks">精选</a>
+      <a href="/#updates">更新</a>
+      <a href="/#cats">分类</a>
+      <a href="/#deep">解析</a>
+      <a href="/#guide">指南</a>
+      <a href="/#faq">问答</a>
+      <a href="/#voices">评论</a>
+      <a href="/#news">资讯</a>
+      <a href="/#rec">推荐</a>
+      <a href="/#rank">榜单</a>
+    </nav>
+
+    <div class="head-tools">
+      <form class="search" id="searchForm" role="search" aria-label="站内条目查找">
+        <label class="sr" for="q">查找条目</label>
+        <input id="q" name="q" type="search" placeholder="书名 / 曲目 / 地名" autocomplete="off">
+        <button type="submit">查找</button>
+      </form>
+    </div>
+    <p class="search-msg" id="searchMsg" role="status" aria-live="polite"></p>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- 首屏 -->
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="hero-kicker">旧书 · 唱片 · 地方影像 · 口述录音</p>
+      <h1 id="heroTitle">集芳閣云搜</h1>
+      <p class="hero-lead">把散在旧书店、县图书馆、私人抽屉里的资料编成一份可查的目录。<b>目前收录 4,812 条条目</b>，其中 1,146 条附有完整影印页或音频时间轴，来源标注到收藏机构与扫描日期。检索按书名、曲目、人名、地名交叉匹配，找不到的条目会说明缺在哪一层。</p>
+      <div class="hero-actions">
+        <a class="btn" href="/#picks">先看本周精选</a>
+        <a class="btn ghost" href="/#guide">怎么查一本书的版本</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>4,812</b>条目总数</div>
+        <div><b>1,146</b>带影印或音频</div>
+        <div><b>37</b>合作收藏方</div>
+        <div><b>11.08</b>目录更新日</div>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="线装书与唱片叠放的装饰构图">
+        <defs>
+          <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#efe6cf"/>
+            <stop offset="1" stop-color="#ded1b0"/>
+          </linearGradient>
+          <linearGradient id="dk" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#31473d"/>
+            <stop offset="1" stop-color="#22312b"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="400" height="400" fill="none"/>
+        <circle cx="292" cy="118" r="86" fill="#dbe5d8"/>
+        <circle cx="292" cy="118" r="58" fill="#22312b"/>
+        <circle cx="292" cy="118" r="20" fill="#c9a227"/>
+        <circle cx="292" cy="118" r="5" fill="#22312b"/>
+        <g transform="rotate(-9 160 250)">
+          <rect x="52" y="196" width="216" height="34" rx="3" fill="url(#dk)"/>
+          <rect x="60" y="164" width="216" height="34" rx="3" fill="#3f6353"/>
+          <rect x="68" y="132" width="216" height="34" rx="3" fill="#506e5d"/>
+          <rect x="76" y="100" width="216" height="34" rx="3" fill="url(#pg)" stroke="#c7b78e"/>
+          <path d="M104 108v18M188 108v18M252 108v18" stroke="#b5a67f" stroke-width="2"/>
+        </g>
+        <g transform="translate(80 300)">
+          <rect x="0" y="0" width="240" height="54" rx="6" fill="#efe6cf" stroke="#c7b78e"/>
+          <rect x="0" y="14" width="240" height="2" fill="#d8c9a4"/>
+          <rect x="16" y="24" width="120" height="5" rx="2.5" fill="#b5a67f"/>
+          <rect x="16" y="36" width="80" height="5" rx="2.5" fill="#cbbd97"/>
+        </g>
+        <circle cx="96" cy="76" r="7" fill="#c9a227"/>
+        <circle cx="120" cy="64" r="4" fill="#8a4b2a"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="wrap layout" id="mainLayout">
+<main>
+
+  <!-- 1 领域概览 -->
+  <section id="overview" aria-labelledby="h-overview">
+    <div class="sec-head">
+      <h2 id="h-overview">领域概览：民间文献检索在查什么</h2>
+      <span class="sub">覆盖浙闽粤 12 个县的旧书、唱片与影像</span>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>三类资料，三种查法</h3>
+        <p>石印古籍看版心、看牌记；黑胶唱片看矩阵号与片芯标签；地方影像看片头字幕与放映登记。三者共同的麻烦是同一内容有多个版本，而目录里只写一个书名。</p>
+        <p>以《闽南歌仔册》为例，厦门会文堂 1953 年石印本与 1980 年代台湾重排本，正文用字差异在 200 处以上，靠书名检索会直接混在一起。</p>
+      </div>
+      <div class="card">
+        <h3>数据从哪来</h3>
+        <p>合作方 37 家：县级图书馆 21 家、私人藏书室 9 家、唱片藏家 5 家、地方志办公室 2 家。每批入库登记收藏方、扫描日期、设备型号与分辨率。</p>
+        <p>11 月 1 日至 11 月 8 日共入库 214 条，其中 63 条附影印页，12 条附音频片段。未附影印的条目只提供书目，不提供全文。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 精选推荐 -->
+  <section id="picks" aria-labelledby="h-picks">
+    <div class="sec-head">
+      <h2 id="h-picks">精选内容推荐</h2>
+      <span class="sub">按信息完整度挑选，非按热度</span>
+      <a class="more" href="/#rank">看完整榜单 →</a>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <img src="https://picsum.photos/seed/jifangge-book1/640/360" width="640" height="360" loading="lazy" alt="线装书摊开的书页与版心特写">
+        <p class="meta">古籍影印 · 2026-11-06 入库</p>
+        <h3>《泉南指谱重编》1914 年石印本</h3>
+        <p>南音工乂谱，收曲 43 套。影印页含封面、序、目录与第 1—18 页，缺卷末附录。收藏方为晋江陈氏藏书室。</p>
+        <span class="tag">南音工乂谱</span><span class="tag gold">影印 22 页</span>
+      </article>
+      <article class="card">
+        <img src="https://picsum.photos/seed/jifangge-record2/640/360" width="640" height="360" loading="lazy" alt="黑胶唱片片芯与矩阵号标签">
+        <p class="meta">黑胶唱片 · 2026-11-04 入库</p>
+        <h3>梨园戏《陈三五娘》选段 78 转唱片</h3>
+        <p>片芯标“香港南国唱片”，矩阵号 NS-118-A/B。音频时间轴 6 分 41 秒，第二面开头有 4 秒底噪，唱词已转写。</p>
+        <span class="tag">矩阵号核对</span><span class="tag gold">音频 1 条</span>
+      </article>
+      <article class="card">
+        <img src="https://picsum.photos/seed/jifangge-film3/640/360" width="640" height="360" loading="lazy" alt="老式胶片盒与放映登记簿">
+        <p class="meta">地方影像 · 2026-10-30 入库</p>
+        <h3>1962 年漳州侨乡放映登记簿</h3>
+        <p>登记 47 场放映，含片名、场次、观众数、放映员姓名。与《闽南电影志》所载场次相差 3 场，差异页已标出。</p>
+        <span class="tag">放映登记</span><span class="tag">场次差异</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3 最新更新 -->
+  <section id="updates" aria-labelledby="h-updates">
+    <div class="sec-head">
+      <h2 id="h-updates">最新更新</h2>
+      <span class="sub">11 月 1 日—11 月 8 日</span>
+    </div>
+    <ul class="list-plain">
+      <li><time datetime="2026-11-08">11月8日</time><a href="/#picks">《泉南指谱重编》补入卷首序文 3 页</a><span class="src">晋江陈氏藏书室</span></li>
+      <li><time datetime="2026-11-07">11月7日</time><a href="/#cats">闽南歌仔册影印补录第 4 批，37 册</a><span class="src">厦门会文堂石印本 2 种</span></li>
+      <li><time datetime="2026-11-06">11月6日</time><a href="/#picks">梨园戏《陈三五娘》音频转写完成，改正唱词 6 处</a><span class="src">藏家林敬和</span></li>
+      <li><time datetime="2026-11-05">11月5日</time><a href="/#deep">新增版本对照：《荔镜记》戏文三种排列顺序</a><span class="src">比对底本 4 种</span></li>
+      <li><time datetime="2026-11-03">11月3日</time><a href="/#news">漳州放映登记簿场次差异说明发布</a><span class="src">与《闽南电影志》对照</span></li>
+      <li><time datetime="2026-11-02">11月2日</time><a href="/#rec">潮州歌册入门检索路径上线</a><span class="src">含 9 个检索式</span></li>
+      <li><time datetime="2026-11-01">11月1日</time><a href="/#faq">检索式写法问答扩充至 14 条</a><span class="src">按书名、人名、地名分列</span></li>
+    </ul>
+  </section>
+
+  <!-- 4 分类入口 -->
+  <section id="cats" aria-labelledby="h-cats">
+    <div class="sec-head">
+      <h2 id="h-cats">分类入口</h2>
+      <span class="sub">8 个频道，按资料形态分</span>
+    </div>
+    <div class="cat-index">
+      <a href="/#picks">闽南歌仔册石印本<span>共 486 条 · 影印 213 条</span></a>
+      <a href="/#picks">南音工乂谱抄本<span>共 172 条 · 影印 88 条</span></a>
+      <a href="/#picks">梨园戏与高甲戏唱片<span>共 241 条 · 音频 96 条</span></a>
+      <a href="/#picks">潮州歌册木刻本<span>共 133 条 · 影印 61 条</span></a>
+      <a href="/#news">侨乡放映登记簿<span>共 58 条 · 转录 41 条</span></a>
+      <a href="/#news">县级地方志索引<span>共 764 条 · 全文 302 条</span></a>
+      <a href="/#rec">族谱与侨批选录<span>共 392 条 · 影印 174 条</span></a>
+      <a href="/#rec">口述录音与唱词转写<span>共 129 条 · 音频 109 条</span></a>
+    </div>
+  </section>
+
+  <!-- 5 深度解析 -->
+  <section id="deep" aria-labelledby="h-deep">
+    <div class="sec-head">
+      <h2 id="h-deep">深度解析：版本先后不能只看刊刻年份</h2>
+      <span class="sub">主体阅读区 · 可核对，也可被反驳</span>
+    </div>
+    <div class="deep">
+      <p>目录工作里最容易出错的一步，是把“刊刻年份”当成“内容先后”。这两种顺序在民间刻本上经常不一致：晚刻的本子可能保留更早的正文，早刻的本子也可能经过挖改。</p>
+
+      <h3>一、会文堂 1953 年本与 1980 年代重排本：用字差 217 处</h3>
+      <p>以《闽南歌仔册》中的《陈三五娘》歌本为例，厦门会文堂 1953 年石印本共 32 页，台湾重排本 29 页。逐字比对后差 217 处，其中 189 处是繁简与异体字替换，28 处涉及词句增减。重排本删去“五娘上楼”一段的 11 行唱词，页数减少主要来自这里，不是排版压缩。</p>
+      <p>据此可以下一个可被反驳的判断：<strong>1980 年代重排本在内容上晚于 1953 年石印本，但不是简单翻刻，而是经过删节的新版本。</strong>反驳路径很明确——若能在 1955 至 1965 年间找到同样删节的本子，则删节行为要往前提，重排本只是沿袭。</p>
+
+      <div class="pull">
+        判断：版本先后的可靠依据是正文差异，不是封面年份。
+        <cite>核对方法：取 3 页以上连续正文逐字比对，记录增减行数与用字。</cite>
+      </div>
+
+      <h3>二、四项可核对要素</h3>
+      <table class="check-table">
+        <thead><tr><th>要素</th><th>查什么</th><th>本例结果</th></tr></thead>
+        <tbody>
+          <tr><td>牌记</td><td>刊刻堂号、年份、地址</td><td>会文堂，1953，厦门</td></tr>
+          <tr><td>版心</td><td>书名、卷次、页码顺序</td><td>页码连续，无补版</td></tr>
+          <tr><td>正文</td><td>连续 3 页逐字比对</td><td>差 217 处，删 11 行</td></tr>
+          <tr><td>纸质与印色</td><td>纸帘纹、墨色均匀度</td><td>石印，墨色偏淡</td></tr>
+        </tbody>
+      </table>
+      <p>四要素里，牌记最容易伪造，纸质最难伪造。私人藏书室收的 9 种歌仔册中，有 2 种牌记标 1950 年代，纸张却是 1970 年代常见的机制纸，需要另附说明，不能直接按牌记年份入库。</p>
+
+      <h3>三、说法差异：场次数字对不上</h3>
+      <p>漳州 1962 年侨乡放映登记簿记 47 场，《闽南电影志》记 50 场。差异集中在 8 月：登记簿记 6 场，方志记 9 场。可查的第三份材料是当年放映员黄文彬的工作笔记，记 7 场，并注明有一场因雨停映、未计场次。三种说法各有依据，目录里并列呈现，不合并成一个数。</p>
+      <p>这类分歧不必急着裁决。把三份材料的日期、场次、停映原因并列，读者自己就能看出差异来源。事实是登记簿 47 场，回应是方志编纂者称“补入邻县代映场次”，转述来自黄文彬笔记，推测则是补齐的 3 场可能包含跨县放映——推测部分已单独标注。</p>
+
+      <h3>四、规则前后变化：入库标准从 2024 到 2026</h3>
+      <p>2024 年入库只要求书名、收藏方、年份三项；2026 年 3 月起增加扫描分辨率与设备型号，10 月起又要求影印页不少于 5 页才计入“带影印”条目。标准变化直接影响统计口径：按 2024 年标准，带影印条目为 1,402 条；按 2026 年 10 月标准为 1,146 条。两个数都对，差别在门槛。</p>
+    </div>
+  </section>
+
+  <!-- 6 体验指南 -->
+  <section id="guide" aria-labelledby="h-guide">
+    <div class="sec-head">
+      <h2 id="h-guide">体验指南：四步查清一个版本</h2>
+      <span class="sub">适用于石印本、木刻本与重排本</span>
+    </div>
+    <ol class="steps">
+      <li><b>先定书名与异名</b>《荔枝记》《荔镜记》《陈三五娘》在目录里是三条记录。先用异名表把可能的名字列全，再逐一检索，别指望一次命中。</li>
+      <li><b>看牌记与版心</b>牌记给堂号与年份，版心给卷次与页码。页码从 1 连续到末页的，补版可能性低；中间跳号的，要查是否配本。</li>
+      <li><b>取连续三页比对</b>选正文中段三页，逐字比对用字与行数。差 10 处以内多半是异体字，差 50 处以上要怀疑是不同版本。</li>
+      <li><b>记录来源与日期</b>写清收藏方、扫描日期、设备与分辨率。同一本书在两个收藏方手里，扫描结果可能完全不同，来源必须能追溯。</li>
+    </ol>
+  </section>
+
+  <!-- 7 对照面板 -->
+  <section id="compare" aria-labelledby="h-compare">
+    <div class="sec-head">
+      <h2 id="h-compare">影印本与转录本怎么选</h2>
+      <span class="sub">同一份资料两种呈现的差别</span>
+    </div>
+    <div class="compare">
+      <div>
+        <h4>影印本</h4>
+        <ul>
+          <li>保留原版式、牌记、版心</li>
+          <li>可直接核对用字与行款</li>
+          <li>文件体积大，单册常超 80MB</li>
+          <li>需人工判读，无全文检索</li>
+          <li>适合版本比对与引用</li>
+        </ul>
+      </div>
+      <div>
+        <h4>转录本</h4>
+        <ul>
+          <li>可全文检索，速度快</li>
+          <li>异体字常被规范化，损失原貌</li>
+          <li>转写错误需标注置信度</li>
+          <li>适合通读与找关键词</li>
+          <li>引用前须回核影印页</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 FAQ -->
+  <section id="faq" aria-labelledby="h-faq">
+    <div class="sec-head">
+      <h2 id="h-faq">常见问题</h2>
+      <span class="sub">按检索式、版本、来源三类</span>
+    </div>
+
+    <details>
+      <summary>闽南歌仔册石印本怎么判断是原刻还是翻刻？</summary>
+      <div class="ans">先看牌记的堂号与地址是否一致，再看版心页码是否连续。翻刻本常见两个特征：牌记年份与纸张年代不符，以及版框边线粗细不均。会文堂 1953 年本版框边线宽约 1.2 毫米，翻刻本多在 0.8 毫米上下，用放大镜可比。最后取连续三页比对用字，翻刻常有整行重排。</div>
+    </details>
+
+    <details>
+      <summary>南音工乂谱抄本没有刊刻年份，怎么定年代？</summary>
+      <div class="ans">工乂谱抄本一般只有抄写人署名和干支纪年。可用的线索有三：纸张帘纹密度、墨色氧化程度、指法符号的写法变化。1914 年《泉南指谱重编》石印本确立了指法符号的一套写法，此前抄本多用简写。若抄本的指法符号与 1914 年本一致，年代上限可定在 1914 年之后。</div>
+    </details>
+
+    <details>
+      <summary>梨园戏唱片片芯没有矩阵号，还能核对吗？</summary>
+      <div class="ans">可以，但要降级处理。先看片芯标签的印刷字体与厂牌排版，再看唱片引出槽的宽度。南国唱片 1950 年代压片的引出槽宽约 3 毫米，1970 年代再版多在 2 毫米。两者都不足以单独定年，需与同一批藏品的其他唱片交叉比对，并在条目里标注“矩阵号缺失，年代存疑”。</div>
+    </details>
+
+    <details>
+      <summary>地方志里的放映场次和登记簿不一致，采信哪一个？</summary>
+      <div class="ans">放映登记簿是一手记录，地方志多为后编。漳州 1962 年这组数据，登记簿 47 场、方志 50 场、放映员笔记 7 场（8 月）。目录并列三份数字，不合并。若必须选一个引用，优先用登记簿，并附注差异来源。</div>
+    </details>
+
+    <details>
+      <summary>潮州歌册木刻本的册数与目录对不上怎么办？</summary>
+      <div class="ans">先说清对不上的是哪一层：是册数、卷次，还是页码。木刻本常出现合册，两册装成一册，册数少而卷次全。查版心卷次是否连续，比查册数可靠。若卷次连续而册数少，多半是后人合装，不是缺本。</div>
+    </details>
+
+    <details>
+      <summary>检索不到条目时，怎么判断是没收录还是写法不同？</summary>
+      <div class="ans">先用异名表换三种写法各查一次，再查收藏方名称。三种写法都无结果，才判断为未收录。目录的未收录条目也会反馈缺在哪一层：缺书目、缺影印，还是缺转写。反馈信息会说明下一步该找哪家收藏方。</div>
+    </details>
+  </section>
+
+  <!-- 9 用户评论 -->
+  <section id="voices" aria-labelledby="h-voices">
+    <div class="sec-head">
+      <h2 id="h-voices">用户评论</h2>
+      <span class="sub">来自藏家、研究者与普通读者的留言</span>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p><span class="stars">★★★★★</span> 《泉南指谱重编》那 22 页影印清楚到能看出版心的刻痕，比我 2019 年在晋江看到的复印本好太多。就是缺卷末附录，可惜。</p>
+        <footer>陈守拙 · 南音研究者 · 11月7日</footer>
+      </div>
+      <div class="quote">
+        <p><span class="stars">★★★☆☆</span> 梨园戏那张 78 转唱片的转写，第二面第 3 段有句唱词我觉得听错了，“望月”听成“望楼”。底噪 4 秒那段确实没法听清，不怪转写。</p>
+        <footer>林敬和 · 唱片藏家 · 11月6日</footer>
+      </div>
+      <div class="quote">
+        <p><span class="stars">★★★★☆</span> 放映登记簿和方志对不上这事，处理得比较老实，三个数并排放。就是希望把黄文彬笔记的影印页也放出来，现在只看到转录。</p>
+        <footer>周明远 · 地方志办公室 · 11月5日</footer>
+      </div>
+      <div class="quote">
+        <p><span class="stars">★★☆☆☆</span> 搜“歌仔册”出来的前三条都是石印本，木刻本要翻到第二页。分类入口是不是该把木刻本单独拎出来。另外转写把“阮”统一成“我们”，读着别扭。</p>
+        <footer>匿名读者 · 11月4日</footer>
+      </div>
+      <div class="quote">
+        <p><span class="stars">★★★★★</span> 按四步查版本的方法试了一遍，手头一本 1954 年的歌仔册，版心页码到 28 页后跳到 31 页，果然是配本。这个方法管用。</p>
+        <footer>吴丽卿 · 私人藏书 · 11月3日</footer>
+      </div>
+      <div class="quote">
+        <p><span class="stars">★★★☆☆</span> 潮州歌册的册数问题解释得可以，但“合册”这个说法在藏家之间不统一，有人叫“合订”。检索式里最好把两种叫法都收进去。</p>
+        <footer>蔡伯衡 · 潮州歌册藏家 · 11月2日</footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 相关资讯 -->
+  <section id="news" aria-labelledby="h-news">
+    <div class="sec-head">
+      <h2 id="h-news">相关资讯</h2>
+      <span class="sub">合作方与整理动态</span>
+    </div>
+    <ul class="list-plain">
+      <li><time datetime="2026-11-07">11月7日</time><a href="/#cats">厦门会文堂石印本第 4 批影印完成，37 册</a><span class="src">厦门市图书馆提供底本</span></li>
+      <li><time datetime="2026-11-05">11月5日</time><a href="/#deep">《荔镜记》三种底本排列顺序比对结果公布</a><span class="src">差异 61 处，删节 11 行</span></li>
+      <li><time datetime="2026-11-03">11月3日</time><a href="/#compare">影印与转录双轨呈现规则调整，5 页起计入</a><span class="src">10 月起执行</span></li>
+      <li><time datetime="2026-10-31">10月31日</time><a href="/#rec">潮州歌册检索路径上线，含 9 个检索式</a><span class="src">蔡伯衡提供异名表</span></li>
+      <li><time datetime="2026-10-29">10月29日</time><a href="/#faq">县级地方志索引扩至 764 条</a><span class="src">新增 3 个县</span></li>
+    </ul>
+  </section>
+
+  <!-- 11 相关推荐 -->
+  <section id="rec" aria-labelledby="h-rec">
+    <div class="sec-head">
+      <h2 id="h-rec">相关推荐</h2>
+      <span class="sub">按你的检索习惯给出</span>
+    </div>
+    <p>
+      <a class="tag" href="/#picks">闽南歌仔册石印本</a>
+      <a class="tag" href="/#picks">南音工乂谱抄本</a>
+      <a class="tag" href="/#picks">梨园戏黑胶唱片</a>
+      <a class="tag" href="/#picks">潮州歌册木刻本</a>
+      <a class="tag" href="/#news">侨乡放映登记簿</a>
+      <a class="tag" href="/#deep">《荔镜记》版本对照</a>
+      <a class="tag" href="/#guide">石印本原刻与翻刻辨识</a>
+      <a class="tag" href="/#faq">工乂谱抄本年代判断</a>
+      <a class="tag" href="/#rec">族谱与侨批选录</a>
+      <a class="tag" href="/#rec">口述录音唱词转写</a>
+      <a class="tag" href="/#compare">影印本与转录本对照</a>
+      <a class="tag" href="/#rank">本周可信度分层榜</a>
+    </p>
+  </section>
+
+  <!-- 12 榜单 -->
+  <section id="rank" aria-labelledby="h-rank">
+    <div class="sec-head">
+      <h2 id="h-rank">本周可信度分层榜</h2>
+      <span class="sub">A 层有三份以上材料互证</span>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <p class="meta">A 层 · 三份材料互证</p>
+        <h3>《泉南指谱重编》1914 年石印本</h3>
+        <p>牌记、版心、影印页三项齐全，另有晋江陈氏藏书室的购书票据。曲目数与《南音曲谱总目》一致，43 套。</p>
+      </div>
+      <div class="card">
+        <p class="meta">B 层 · 两份材料，一处存疑</p>
+        <h3>梨园戏《陈三五娘》78 转唱片</h3>
+        <p>片芯与矩阵号相符，音频完整。存疑处是录音年份：片芯无年份，只能按厂牌排版推在 1955 至 1962 年间，未定死。</p>
+      </div>
+      <div class="card">
+        <p class="meta">C 层 · 单份材料，待补</p>
+        <h3>漳州 1962 年侨乡放映登记簿</h3>
+        <p>一手记录，但与方志、放映员笔记三处数字不一致。黄文彬笔记目前只有转录，缺影印页，等到影印补齐后再上调层级。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 时间线 -->
+  <section id="timeline" aria-labelledby="h-timeline">
+    <div class="sec-head">
+      <h2 id="h-timeline">一条唱片的整理时间线</h2>
+      <span class="sub">从入库到可引用，共 39 天</span>
+    </div>
+    <ul class="list-plain">
+      <li><time datetime="2026-09-29">9月29日</time><span>林敬和送来唱片，登记片芯与矩阵号 NS-118-A/B</span><span class="src">藏家</span></li>
+      <li><time datetime="2026-10-06">10月6日</time><span>完成 24bit/96kHz 录音，第二面留 4 秒底噪未删</span><span class="src">录音室</span></li>
+      <li><time datetime="2026-10-19">10月19日</time><span>唱词初稿转写完成，共 182 行</span><span class="src">转写组</span></li>
+      <li><time datetime="2026-11-04">11月4日</time><span>回核改正 6 处，第二面第 3 段“望月”一处仍存疑</span><span class="src">两位校者</span></li>
+      <li><time datetime="2026-11-06">11月6日</time><span>条目入库，标注“年份推定，矩阵号完整”</span><span class="src">目录组</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- 侧栏 -->
+<aside class="rail" aria-label="侧栏导航与速览">
+  <div class="rail-box">
+    <h2>本页导航</h2>
+    <ul id="railNav">
+      <li><a href="/#overview">领域概览</a></li>
+      <li><a href="/#picks">精选推荐</a></li>
+      <li><a href="/#updates">最新更新</a></li>
+      <li><a href="/#cats">分类入口</a></li>
+      <li><a href="/#deep">深度解析</a></li>
+      <li><a href="/#guide">体验指南</a></li>
+      <li><a href="/#faq">常见问题</a></li>
+      <li><a href="/#voices">用户评论</a></li>
+      <li><a href="/#news">相关资讯</a></li>
+      <li><a href="/#rank">可信度分层</a></li>
+    </ul>
+  </div>
+  <div class="rail-box">
+    <h3>条目数速览</h3>
+    <ul>
+      <li><a href="/#picks">闽南歌仔册石印本<span class="cnt">486</span></a></li>
+      <li><a href="/#picks">南音工乂谱抄本<span class="cnt">172</span></a></li>
+      <li><a href="/#picks">梨园戏与高甲戏唱片<span class="cnt">241</span></a></li>
+      <li><a href="/#picks">潮州歌册木刻本<span class="cnt">133</span></a></li>
+      <li><a href="/#news">县级地方志索引<span class="cnt">764</span></a></li>
+      <li><a href="/#rec">族谱与侨批选录<span class="cnt">392</span></a></li>
+    </ul>
+  </div>
+  <div class="rail-box">
+    <h3>检索小贴士</h3>
+    <p>书名用异名各查一次；查不到先换收藏方名称再试。结果页会说明缺的是书目、影印还是转写。</p>
+  </div>
+</aside>
+</div>
+
+<!-- 页脚 -->
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <p class="fbrand">集芳閣云搜</p>
+        <p>把浙闽粤三地的旧书、唱片与影像编成一份可追溯的目录。每条记录标来源、日期与核实层级，缺什么写明缺什么。</p>
+      </div>
+      <div>
+        <h3>资料频道</h3>
+        <ul>
+          <li><a href="/#picks">闽南歌仔册石印本</a></li>
+          <li><a href="/#picks">南音工乂谱抄本</a></li>
+          <li><a href="/#picks">梨园戏黑胶唱片</a></li>
+          <li><a href="/#picks">潮州歌册木刻本</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>方法与规则</h3>
+        <ul>
+          <li><a href="/#deep">版本先后判断</a></li>
+          <li><a href="/#guide">四步查版本</a></li>
+          <li><a href="/#compare">影印与转录对照</a></li>
+          <li><a href="/#rank">可信度分层标准</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>参与与反馈</h3>
+        <ul>
+          <li><a href="/#voices">用户评论</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#rec">相关推荐</a></li>
+          <li><a href="/#timeline">整理时间线</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <p>示例数据说明：本页条目数、合作收藏方数量与更新日期为演示用示例数据，其中日期口径统一截至 2026 年 11 月 8 日；合作方名称与藏家姓名为示例生成，非真实机构与个人。影印页与音频片段仅展示元数据，不提供下载。</p>
+      <p>页面更新时间：2026 年 11 月 8 日，对应更新项为《泉南指谱重编》补入卷首序文 3 页。© 2026 集芳閣云搜 · 目录内容按署名与来源标注，转载须注明收藏方与原扫描日期。</p>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if (e.target.tagName === 'A' && window.innerWidth <= 760) {
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 500) { toTop.classList.add('on'); }
+    else { toTop.classList.remove('on'); }
+  }, {passive:true});
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  var railLinks = Array.prototype.slice.call(document.querySelectorAll('#railNav a, .nav-main a'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  function highlight(){
+    var pos = window.scrollY + 160;
+    var current = null;
+    sections.forEach(function(s){
+      if (s.offsetTop <= pos) current = s.id;
+    });
+    railLinks.forEach(function(a){
+      var target = a.getAttribute('href').split('#')[1];
+      if (target === current) a.classList.add('active');
+      else a.classList.remove('active');
+    });
+  }
+  window.addEventListener('scroll', highlight, {passive:true});
+  highlight();
+
+  var form = document.getElementById('searchForm');
+  var input = document.getElementById('q');
+  var msg = document.getElementById('searchMsg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var kw = input.value.trim();
+    if (!kw) { msg.textContent = '请输入书名、曲目或地名后再查找。'; msg.classList.add('on'); return; }
+    var pool = Array.prototype.slice.call(document.querySelectorAll('main h3, main .list-plain a, main .cat-index a, main .tag, details summary'));
+    var hits = pool.filter(function(el){ return el.textContent.indexOf(kw) !== -1; });
+    if (hits.length === 0) {
+      msg.textContent = '未找到“' + kw + '”。可换异名或用收藏方名称再试，例如“会文堂”“南国唱片”。';
+      msg.classList.add('on');
+    } else {
+      msg.textContent = '找到 ' + hits.length + ' 条相关条目，首条：' + hits[0].textContent.trim().slice(0, 24) + '。已定位到结果。';
+      msg.classList.add('on');
+      hits[0].scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"集芳閣云搜",
+  "description":"老书、旧唱片与地方影像的检索目录，覆盖浙闽粤三地古籍影印、民国期刊、黑胶曲目与口述录音。",
+  "inLanguage":"zh-CN",
+  "dateModified":"2026-11-08"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"闽南歌仔册石印本怎么判断是原刻还是翻刻？","acceptedAnswer":{"@type":"Answer","text":"先看牌记的堂号与地址是否一致，再看版心页码是否连续。翻刻本常见牌记年份与纸张年代不符、版框边线粗细不均。会文堂1953年本版框边线宽约1.2毫米，翻刻本多在0.8毫米上下。最后取连续三页比对用字。"}},
+    {"@type":"Question","name":"南音工乂谱抄本没有刊刻年份，怎么定年代？","acceptedAnswer":{"@type":"Answer","text":"可用纸张帘纹密度、墨色氧化程度、指法符号写法变化三条线索。1914年《泉南指谱重编》石印本确立了指法符号写法，此前抄本多用简写；若抄本指法符号与1914年本一致，年代上限可定在1914年之后。"}},
+    {"@type":"Question","name":"梨园戏唱片片芯没有矩阵号，还能核对吗？","acceptedAnswer":{"@type":"Answer","text":"可以但需降级处理。看片芯标签的印刷字体与厂牌排版，再看引出槽宽度。南国唱片1950年代压片引出槽宽约3毫米，1970年代再版多在2毫米。两者都不足以单独定年，需与同批藏品交叉比对并标注年代存疑。"}},
+    {"@type":"Question","name":"地方志里的放映场次和登记簿不一致，采信哪一个？","acceptedAnswer":{"@type":"Answer","text":"放映登记簿是一手记录，地方志多为后编。漳州1962年这组数据登记簿记47场、方志记50场、放映员笔记记7场（8月）。目录并列三份数字不合并；若必须选一个引用，优先用登记簿并附注差异来源。"}},
+    {"@type":"Question","name":"潮州歌册木刻本的册数与目录对不上怎么办？","acceptedAnswer":{"@type":"Answer","text":"先说清对不上的是册数、卷次还是页码。木刻本常出现合册，两册装成一册，册数少而卷次全。查版心卷次是否连续比查册数可靠；若卷次连续而册数少，多半是后人合装，不是缺本。"}},
+    {"@type":"Question","name":"检索不到条目时，怎么判断是没收录还是写法不同？","acceptedAnswer":{"@type":"Answer","text":"先用异名表换三种写法各查一次，再查收藏方名称。三种写法都无结果才判断为未收录。目录的未收录条目也会反馈缺在书目、影印还是转写哪一层。"}}
+  ]
+}
+</script>
+</body>
+                                                                                        </html>
