@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日大赛今日爆料聚集地-赛事爆料与赛程追踪</title>
+<meta name="description" content="每日大赛今日爆料聚集地，汇总马拉松、机器人格斗、街舞、编程与电竞等赛事的赛程变化、争议判罚与选手动态，含规则对照、观赛指南与选手评论，所有条目附时间与来源标注，便于逐条核对。">
+<meta name="keywords" content="每日大赛今日爆料聚集地">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23122b3a'/%3E%3Cpath d='M14 44 L26 22 L34 36 L42 18 L50 44' fill='none' stroke='%23f2b544' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#152029;
+  --ink-2:#3d4e5c;
+  --ink-3:#6b7d8a;
+  --paper:#f6f4ef;
+  --card:#ffffff;
+  --line:#dcd7cc;
+  --line-2:#eae6dc;
+  --brand:#12303f;
+  --brand-2:#1d4a5e;
+  --accent:#c8761c;
+  --accent-soft:#f7e3c4;
+  --accent-2:#2f7b6b;
+  --accent-3:#8c3b4a;
+  --radius:10px;
+  --radius-lg:16px;
+  --shadow:0 1px 2px rgba(21,32,41,.06),0 6px 18px rgba(21,32,41,.06);
+  --shadow-sm:0 1px 2px rgba(21,32,41,.08);
+  --fs-0:12px;
+  --fs-1:13px;
+  --fs-2:15px;
+  --fs-3:17px;
+  --fs-4:20px;
+  --fs-5:26px;
+  --fs-6:34px;
+  --fs-7:46px;
+  --sp-1:6px;
+  --sp-2:10px;
+  --sp-3:16px;
+  --sp-4:22px;
+  --sp-5:32px;
+  --sp-6:48px;
+  --wrap:1180px;
+  --ann-h:38px;
+  --head-h:62px;
+  --stick:calc(var(--ann-h) + var(--head-h));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--stick) + 12px)}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  font-size:var(--fs-2);line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;letter-spacing:.01em}
+p{margin:0 0 var(--sp-3)}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+ul,ol{margin:0 0 var(--sp-3);padding-left:1.2em}
+li{margin-bottom:var(--sp-1)}
+img{max-width:100%;display:block}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 var(--sp-4)}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:8px;top:8px;z-index:99;background:#fff;padding:8px 14px;border-radius:6px;border:2px solid var(--accent)}
+
+/* 吸顶 */
+.stickwrap{position:sticky;top:0;z-index:50;box-shadow:var(--shadow-sm)}
+.announce{
+  height:var(--ann-h);background:var(--brand);color:#f4efe5;font-size:var(--fs-1);
+  display:flex;align-items:center;overflow:hidden;
+}
+.announce .wrap{display:flex;align-items:center;gap:var(--sp-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.announce b{color:#f2b544;font-weight:700;letter-spacing:.02em}
+.announce .dot{width:6px;height:6px;border-radius:50%;background:#f2b544;flex:none}
+.announce time{color:#c8d3d9;font-variant-numeric:tabular-nums}
+.sitehead{height:var(--head-h);background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.sitehead .wrap{height:100%;display:flex;align-items:center;gap:var(--sp-3)}
+.brand{display:flex;align-items:center;gap:10px;flex:none;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand svg{width:36px;height:36px;flex:none}
+.brand .bt{display:flex;flex-direction:column;line-height:1.2}
+.brand .bt strong{font-size:var(--fs-2);letter-spacing:.01em}
+.brand .bt span{font-size:11px;color:var(--ink-3);letter-spacing:.08em}
+.mainnav{margin-left:auto;display:flex;align-items:center;gap:2px}
+.mainnav a{font-size:var(--fs-1);color:var(--ink-2);padding:8px 10px;border-radius:8px}
+.mainnav a:hover{background:var(--accent-soft);color:var(--ink);text-decoration:none}
+.mainnav a.active{background:var(--brand);color:#fff}
+.hsearch{position:relative;flex:none;width:200px}
+.hsearch input{
+  width:100%;height:34px;border:1px solid var(--line);border-radius:8px;background:#fbfaf7;
+  padding:0 32px 0 10px;font-size:var(--fs-1);color:var(--ink)
+}
+.hsearch input:focus{border-color:var(--brand-2);background:#fff}
+.hsearch .ic{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none}
+.searchmsg{
+  position:absolute;left:0;right:-60px;top:40px;background:#fff;border:1px solid var(--line);
+  border-radius:8px;box-shadow:var(--shadow);padding:8px 10px;font-size:var(--fs-0);color:var(--ink-2);display:none;z-index:60
+}
+.searchmsg.on{display:block}
+.menubtn{display:none;margin-left:auto;width:38px;height:38px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;align-items:center;justify-content:center}
+.menubtn span{display:block;width:16px;height:2px;background:var(--ink);position:relative}
+.menubtn span::before,.menubtn span::after{content:"";position:absolute;left:0;width:16px;height:2px;background:var(--ink)}
+.menubtn span::before{top:-5px}.menubtn span::after{top:5px}
+
+/* 首屏 */
+.hero{background:
+  radial-gradient(900px 340px at 85% -10%, #1d4a5e 0%, transparent 65%),
+  linear-gradient(160deg,#12303f 0%,#173d4e 58%,#1b4a55 100%);
+  color:#f3efe6;position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(700px 380px at 20% 30%,#000 20%,transparent 78%)
+}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp-5);padding-top:var(--sp-6);padding-bottom:var(--sp-6)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-0);letter-spacing:.16em;color:#f2b544;border:1px solid rgba(242,181,68,.45);padding:4px 10px;border-radius:999px;margin-bottom:var(--sp-3)}
+.hero h1{font-size:var(--fs-7);letter-spacing:.02em;color:#fff;margin-bottom:var(--sp-3)}
+.hero .lede{font-size:var(--fs-3);color:#dfe6e4;max-width:32em;margin-bottom:var(--sp-4)}
+.hero .lede b{color:#f2b544;font-weight:700}
+.hero-acts{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-4)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-size:var(--fs-2);font-weight:600;border:1px solid transparent;transition:transform .16s ease,background .16s ease}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-main{background:#f2b544;color:#1d2b33}
+.btn-main:hover{background:#ffc65e}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:#eef3f2}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-2);margin:0;padding:0;list-style:none}
+.hero-stats li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:10px 12px}
+.hero-stats b{display:block;font-size:var(--fs-4);color:#fff;font-variant-numeric:tabular-nums}
+.hero-stats span{font-size:var(--fs-0);color:#b9c9cd;letter-spacing:.04em}
+.hero-fig{align-self:center;position:relative}
+.trackboard{background:rgba(9,26,34,.5);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-lg);padding:var(--sp-3);box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.trackboard header{display:flex;justify-content:space-between;align-items:baseline;font-size:var(--fs-0);color:#9fb4ba;letter-spacing:.1em;margin-bottom:10px}
+.trackboard header b{color:#f2b544;letter-spacing:0}
+.trow{display:grid;grid-template-columns:52px 1fr 62px;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed rgba(255,255,255,.12);font-size:var(--fs-1);color:#dbe4e4}
+.trow:first-of-type{border-top:0}
+.trow .t{font-variant-numeric:tabular-nums;color:#f2b544;font-weight:700}
+.trow .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}
+.trow .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#f2b544,#e08f2c)}
+.trow .v{text-align:right;font-variant-numeric:tabular-nums;color:#a9bcc1;font-size:11px}
+.trackboard footer{font-size:11px;color:#8ea6ac;margin-top:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:8px}
+
+/* 主内容双栏 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--sp-5);padding-top:var(--sp-5);padding-bottom:var(--sp-6);align-items:start}
+section[id]{scroll-margin-top:calc(var(--stick) + 14px)}
+.sec{margin-bottom:var(--sp-6)}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-3);margin-bottom:var(--sp-3);border-bottom:1px solid var(--line);padding-bottom:10px}
+.sec-h h2{font-size:var(--fs-5);position:relative;padding-left:14px}
+.sec-h h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+.sec-h .sub{font-size:var(--fs-1);color:var(--ink-3);flex:none;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:11px;letter-spacing:.06em;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:#8a4d0c;border:1px solid #eed3a9}
+.tag.g{background:#e2f0eb;color:#1f5d51;border-color:#c4e0d7}
+.tag.r{background:#f7e3e5;color:#7c2f3c;border-color:#eccbd0}
+.tag.n{background:#ecebe4;color:#4a545c;border-color:#dbd8cc}
+
+/* 概览 */
+.overview-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--sp-4);box-shadow:var(--shadow-sm)}
+.overview-panel p:last-child{margin-bottom:0}
+.ov-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-2);margin:var(--sp-3) 0 0;padding:0;list-style:none}
+.ov-grid li{border:1px dashed var(--line);border-radius:var(--radius);padding:8px 10px;background:#fbfaf6}
+.ov-grid strong{display:block;font-size:var(--fs-4);color:var(--brand);font-variant-numeric:tabular-nums;line-height:1.3}
+.ov-grid span{font-size:var(--fs-0);color:var(--ink-3)}
+
+/* 精选推荐 网格卡 */
+.picks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}
+.pick{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .16s ease,box-shadow .16s ease}
+.pick:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.pick img{width:100%;height:150px;object-fit:cover}
+.pick .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pick h3{font-size:var(--fs-3)}
+.pick p{margin:0;font-size:var(--fs-1);color:var(--ink-2)}
+.pick .meta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--ink-3);margin-top:auto;padding-top:8px;border-top:1px dashed var(--line-2);font-variant-numeric:tabular-nums}
+
+/* 快讯 时间线 */
+.feed{list-style:none;margin:0;padding:0;border-left:2px solid var(--line-2)}
+.feed li{position:relative;padding:0 0 var(--sp-3) var(--sp-4);margin:0}
+.feed li::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
+.feed time{display:block;font-size:11px;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:.04em;font-weight:700}
+.feed b{font-size:var(--fs-2)}
+.feed p{margin:2px 0 0;font-size:var(--fs-1);color:var(--ink-2)}
+
+/* 分类标签索引 */
+.catchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:var(--sp-3)}
+.catchips a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:var(--fs-1);color:var(--ink-2)}
+.catchips a:hover{border-color:var(--brand-2);color:var(--brand);text-decoration:none;background:#f2f7f7}
+.catchips a b{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.catgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-2)}
+.catcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px}
+.catcard h3{font-size:var(--fs-2);margin-bottom:4px}
+.catcard p{margin:0;font-size:12px;color:var(--ink-3);line-height:1.6}
+
+/* 深度解析 分栏正文 */
+.deep{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--sp-4);box-shadow:var(--shadow-sm)}
+.deep>.kicker{font-size:11px;letter-spacing:.14em;color:var(--accent);font-weight:700;margin-bottom:6px}
+.deep h2{font-size:var(--fs-5);margin-bottom:var(--sp-2)}
+.deep .dmeta{display:flex;flex-wrap:wrap;gap:var(--sp-2);font-size:11px;color:var(--ink-3);border-bottom:1px solid var(--line-2);padding-bottom:10px;margin-bottom:var(--sp-3);font-variant-numeric:tabular-nums}
+.deep h3{font-size:var(--fs-3);margin:var(--sp-4) 0 var(--sp-2);padding-left:10px;border-left:3px solid var(--accent-2)}
+.cols{column-count:2;column-gap:var(--sp-4)}
+.cols p{margin:0 0 var(--sp-3);text-align:justify}
+.cols p:last-child{margin-bottom:0}
+.pull{border-left:3px solid var(--accent);background:#fbf6ee;padding:10px 14px;margin:var(--sp-3) 0;font-size:var(--fs-2);color:var(--ink-2);border-radius:0 8px 8px 0}
+.cmp{width:100%;border-collapse:collapse;margin:var(--sp-3) 0;font-size:var(--fs-1)}
+.cmp caption{caption-side:top;text-align:left;font-size:11px;color:var(--ink-3);padding-bottom:6px;letter-spacing:.04em}
+.cmp th,.cmp td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+.cmp th{background:#f1efe7;font-weight:700;font-size:12px}
+.cmp td{font-variant-numeric:tabular-nums}
+.factcheck{background:#f4f8f6;border:1px solid #cfe2db;border-radius:var(--radius);padding:12px 14px;margin:var(--sp-3) 0;font-size:var(--fs-1)}
+.factcheck h4{font-size:var(--fs-2);color:#1f5d51;margin-bottom:6px}
+.factcheck ol{margin:0;padding-left:1.2em}
+.factcheck li{margin-bottom:3px}
+
+/* 观赛指南 步骤 */
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}
+.steps li{counter-increment:s;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px 16px 14px 54px;box-shadow:var(--shadow-sm)}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:8px;background:var(--brand);color:#f2b544;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.steps h3{font-size:var(--fs-2);margin-bottom:4px}
+.steps p{margin:0;font-size:var(--fs-1);color:var(--ink-2)}
+
+/* FAQ */
+.faq{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--card);box-shadow:var(--shadow-sm)}
+.faq details{border-top:1px solid var(--line-2)}
+.faq details:first-child{border-top:0}
+.faq summary{cursor:pointer;padding:12px 16px;font-weight:700;font-size:var(--fs-2);list-style:none;display:flex;gap:10px;align-items:flex-start;background:#fbfaf6}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+";flex:none;width:18px;color:var(--accent);font-weight:700}
+.faq details[open] summary::before{content:"–"}
+.faq details[open] summary{background:#f5f2e9}
+.faq .ans{padding:0 16px 14px 44px;font-size:var(--fs-1);color:var(--ink-2)}
+.faq .ans p{margin:0}
+
+/* 评论 */
+.cmts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}
+.cmt{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:12px 14px;box-shadow:var(--shadow-sm)}
+.cmt header{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-3);margin-bottom:6px}
+.cmt .av{width:26px;height:26px;border-radius:50%;background:var(--brand-2);color:#f2eede;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.cmt .who{color:var(--ink);font-weight:700;font-size:var(--fs-1)}
+.cmt p{margin:0;font-size:var(--fs-1);color:var(--ink-2)}
+.cmt .ref{display:inline-block;margin-top:6px;font-size:11px;color:var(--accent)}
+.cmt.warn{border-left:3px solid var(--accent-3)}
+
+/* 相关资讯 紧凑列表 */
+.news{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--card)}
+.news li{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 14px;border-top:1px solid var(--line-2);align-items:baseline}
+.news li:first-child{border-top:0}
+.news time{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.news b{font-size:var(--fs-2);font-weight:600}
+.news span{font-size:var(--fs-1);color:var(--ink-3)}
+
+/* 相关推荐 标签 */
+.rectags{display:flex;flex-wrap:wrap;gap:8px}
+.rectags a{background:#fff;border:1px solid var(--line);border-radius:6px;padding:5px 11px;font-size:var(--fs-1);color:var(--ink-2);transition:border-color .16s ease,color .16s ease}
+.rectags a:hover{border-color:var(--accent);color:#8a4d0c;text-decoration:none}
+
+/* 榜单 */
+.rank{list-style:none;margin:0;padding:0;counter-reset:r;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden}
+.rank li{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:10px 14px;border-top:1px solid var(--line-2);counter-increment:r}
+.rank li:first-child{border-top:0}
+.rank li::before{content:counter(r);font-weight:800;color:var(--ink-3);font-variant-numeric:tabular-nums;font-size:var(--fs-3)}
+.rank li:nth-child(-n+3)::before{color:var(--accent)}
+.rank b{font-size:var(--fs-2)}
+.rank i{font-style:normal;font-size:11px;color:var(--ink-3);display:block}
+.rank em{font-style:normal;font-size:var(--fs-1);font-weight:700;color:var(--accent-2);font-variant-numeric:tabular-nums}
+
+/* 侧栏 */
+.side{position:sticky;top:calc(var(--stick) + 14px);display:flex;flex-direction:column;gap:var(--sp-3)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--sp-3);box-shadow:var(--shadow-sm)}
+.panel h2,.panel h3{font-size:var(--fs-2);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.panel h2::before,.panel h3::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--accent);flex:none}
+.sidenav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.sidenav a{display:block;font-size:var(--fs-1);color:var(--ink-2);padding:6px 10px;border-radius:6px;border-left:3px solid transparent}
+.sidenav a:hover{background:#f4f2ea;text-decoration:none}
+.sidenav a.active{background:#f4f2ea;border-left-color:var(--accent);color:var(--ink);font-weight:700}
+.hotlist{list-style:none;margin:0;padding:0}
+.hotlist li{display:flex;gap:8px;padding:7px 0;border-top:1px dashed var(--line-2);font-size:var(--fs-1);align-items:baseline}
+.hotlist li:first-child{border-top:0;padding-top:0}
+.hotlist .n{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;flex:none;width:16px}
+.hotlist a{color:var(--ink-2)}
+.hotlist time{color:var(--ink-3);font-size:11px;flex:none;font-variant-numeric:tabular-nums}
+.quote{font-size:var(--fs-1);color:var(--ink-2);background:#fbf6ee;border:1px solid #eed3a9;border-radius:var(--radius);padding:10px 12px}
+.quote b{display:block;font-size:12px;color:#8a4d0c;margin-top:6px}
+
+/* 页尾 */
+.sitefoot{background:var(--brand);color:#c8d3d9}
+.sitefoot .wrap{padding-top:var(--sp-5);padding-bottom:var(--sp-4)}
+.footgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--sp-4);padding-bottom:var(--sp-4);border-bottom:1px solid rgba(255,255,255,.14)}
+.sitefoot h3{font-size:var(--fs-2);color:#f3efe6;margin-bottom:10px}
+.fbrand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fbrand svg{width:32px;height:32px;flex:none}
+.fbrand strong{font-size:var(--fs-3);color:#fff}
+.sitefoot p{font-size:var(--fs-1);color:#a9bcc1;margin:0 0 8px}
+.sitefoot ul{list-style:none;margin:0;padding:0}
+.sitefoot li{margin-bottom:5px}
+.sitefoot a{color:#c8d3d9;font-size:var(--fs-1)}
+.sitefoot a:hover{color:#f2b544;text-decoration:none}
+.footbottom{display:flex;flex-wrap:wrap;gap:var(--sp-2);justify-content:space-between;align-items:center;padding-top:var(--sp-3);font-size:11px;color:#8ea6ac}
+.footbottom .dot{color:#4f6a72;margin:0 6px}
+
+/* 回到顶部 */
+.totop{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--brand);box-shadow:var(--shadow);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:40}
+.totop.on{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:var(--accent-soft)}
+
+/* 平板 */
+@media (max-width:1000px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;order:2}
+  .hero .wrap{grid-template-columns:1fr;padding-top:var(--sp-5)}
+  .hero h1{font-size:var(--fs-6)}
+  .hero-fig{max-width:520px}
+  .catgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footgrid{grid-template-columns:1fr 1fr}
+  .cols{column-count:1}
+  .mainnav{display:none;position:absolute;left:0;right:0;top:var(--head-h);background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:8px;gap:2px;box-shadow:var(--shadow)}
+  .mainnav.open{display:flex}
+  .mainnav a{padding:10px 12px;font-size:var(--fs-2)}
+  .menubtn{display:flex}
+  .hsearch{width:180px;margin-left:0}
+  .sitehead .wrap{gap:var(--sp-2)}
+}
+/* 手机 */
+@media (max-width:640px){
+  :root{--ann-h:34px;--head-h:58px;--fs-5:22px;--fs-6:28px;--fs-7:30px;--sp-5:24px;--sp-6:32px}
+  .wrap{padding:0 14px}
+  .announce{font-size:11px}
+  .announce .hide-s{display:none}
+  .brand .bt strong{font-size:14px}
+  .brand .bt span{display:none}
+  .hsearch{display:none}
+  .picks,.steps,.cmts,.catgrid{grid-template-columns:1fr}
+  .ov-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero-stats b{font-size:var(--fs-3)}
+  .hero-acts .btn{flex:1;justify-content:center}
+  .news li{grid-template-columns:1fr}
+  .news time{order:-1}
+  .footgrid{grid-template-columns:1fr}
+  .deep{padding:14px}
+  .cols{column-count:1}
+  .stepscol{padding-left:48px}
+  .searchmsg{right:0}
+  .totop{width:40px;height:40px;right:12px;bottom:12px}
+  .cmp{font-size:11px}
+  .cmp th,.cmp td{padding:6px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .pick:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="stickwrap">
+  <div class="announce" role="region" aria-label="更新公告">
+    <div class="wrap">
+      <span class="dot" aria-hidden="true"></span>
+      <b>每日大赛今日爆料聚集地</b>
+      <time datetime="2026-11-08">2026-11-08 08:40</time>
+      <span class="hide-s">城市机器人格斗赛 16 强对阵重抽；半程马拉松 12km 补给点改至 9.5km</span>
+      <a href="/#feed" style="color:#f2b544;margin-left:auto;flex:none">看更新</a>
+    </div>
+  </div>
+  <header class="sitehead">
+    <div class="wrap">
+      <a class="brand" href="/#top" aria-label="返回首页">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#12303f"/><path d="M14 44 L26 22 L34 36 L42 18 L50 44" fill="none" stroke="#f2b544" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="22" r="3" fill="#f2b544"/><circle cx="42" cy="18" r="3" fill="#f2b544"/></svg>
+        <span class="bt"><strong>每日大赛今日爆料聚集地</strong><span>赛事爆料 · 赛程核对</span></span>
+      </a>
+      <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="mainnav" aria-label="展开主题导航"><span></span></button>
+      <nav class="mainnav" id="mainnav" aria-label="主题导航">
+        <a href="/#overview">赛事概览</a>
+        <a href="/#picks">精选爆料</a>
+        <a href="/#feed">今日更新</a>
+        <a href="/#cats">频道分类</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">观赛指南</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="hsearch">
+        <input id="q" type="search" placeholder="搜赛事 / 选手 / 规则" aria-label="站内搜索">
+        <span class="ic" aria-hidden="true">⌕</span>
+        <div class="searchmsg" id="qmsg" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h1">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">2026 赛季 · 第 45 周</span>
+        <h1 id="h1">每日大赛今日爆料聚集地</h1>
+        <p class="lede">把当天各大赛场的赛程变更、判罚争议、选手退赛与技术参数放在同一张台面上。<b>11 月 7 日至 11 月 8 日</b>，这里记录了 6 场赛事的 23 条可核对更新，每条标出时间、来源方与改动前后的数字。</p>
+        <div class="hero-acts">
+          <a class="btn btn-main" href="/#feed">查看今日 23 条更新</a>
+          <a class="btn btn-ghost" href="/#deep">读判罚规则对照</a>
+        </div>
+        <ul class="hero-stats">
+          <li><b>6</b><span>在办赛事</span></li>
+          <li><b>41</b><span>参赛队伍 / 选手</span></li>
+          <li><b>23</b><span>今日可核对条目</span></li>
+        </ul>
+      </div>
+      <div class="hero-fig" aria-hidden="true">
+        <div class="trackboard">
+          <header><span>赛程进度 · 11-08</span><b>实时</b></header>
+          <div class="trow"><span class="t">09:00</span><span>城市机器人格斗 16 强</span><span class="v">已开赛</span><div class="bar" style="grid-column:2/3;display:none"></div></div>
+          <div class="trow"><span class="t">10:30</span><span>半程马拉松 12km 检录</span><span class="v">改点</span></div>
+          <div class="trow"><span class="t">14:00</span><span>街舞 3v3 决赛</span><span class="v">候场</span></div>
+          <div class="trow"><span class="t">16:20</span><span>算法竞赛复赛第二场</span><span class="v">待判</span></div>
+          <div class="trow"><span class="t">19:30</span><span>城市电竞联赛 四强</span><span class="v">未开始</span></div>
+          <footer>进度以赛场公告板为准，改点条目见「今日更新」</footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <div class="content">
+
+      <section class="sec" id="overview" aria-labelledby="h-overview">
+        <div class="sec-h"><h2 id="h-overview">今日赛事领域概览</h2><span class="sub">截至 11-08 09:10</span></div>
+        <div class="overview-panel">
+          <p>同期在办的有 6 项赛事：城市机器人格斗赛、环湖半程马拉松、街舞 3v3 城市对抗、算法竞赛复赛、城市电竞联赛、青少年航模计时赛。类型跨度大，共同点是当天都有规则或赛程层面的改动，且改动都发布在赛场公告板或官方账号上，可回查时间戳。</p>
+          <p>变化最集中的是机器人格斗：11 月 7 日 21:15 赛会重抽 16 强签位，直接把原定 A 组头名「赤鳞」与 B 组第二「铁砧」的对阵提前到首轮。半程马拉松方面，12km 补给点从原定 11km 移至 9.5km，理由是 10.8km 处道路施工。</p>
+          <ul class="ov-grid">
+            <li><strong>6</strong><span>在办赛事</span></li>
+            <li><strong>3</strong><span>规则改动</span></li>
+            <li><strong>9</strong><span>赛程调整</span></li>
+            <li><strong>4</strong><span>在议判罚</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="picks" aria-labelledby="h-picks">
+        <div class="sec-h"><h2 id="h-picks">精选爆料推荐</h2><span class="sub">编辑核对 6 条</span></div>
+        <div class="picks">
+          <article class="pick">
+            <img src="https://picsum.photos/seed/robot-fight-1108/640/360" width="640" height="360" loading="lazy" alt="机器人格斗赛场内两台钢制机器人正面对撞，地面有划痕">
+            <div class="body">
+              <span class="tag">机器人格斗</span>
+              <h3>重抽签位后，「赤鳞」与「铁砧」首轮相遇</h3>
+              <p>赛会 11-07 21:15 公布新签表，两机原定半决赛才可能碰面。赤鳞操作员称配重块上周已换为 8.4kg。</p>
+              <div class="meta"><time datetime="2026-11-07">11-07 21:15</time><span>来源：赛会公告板</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/halfmarathon-1108/640/360" width="640" height="360" loading="lazy" alt="半程马拉松选手沿湖道路奔跑，路边设有蓝色补给桌">
+            <div class="body">
+              <span class="tag g">半程马拉松</span>
+              <h3>12km 补给点前移到 9.5km，赛道里程牌同步改</h3>
+              <p>组委会 11-07 18:40 发通告，原因是 10.8km 段施工围挡。原 11km 处的饮水站撤除。</p>
+              <div class="meta"><time datetime="2026-11-07">11-07 18:40</time><span>来源：组委会通告</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/streetdance-3v3/640/360" width="640" height="360" loading="lazy" alt="街舞比赛场地中央三名舞者定格造型，评委席在背景处">
+            <div class="body">
+              <span class="tag r">街舞对抗</span>
+              <h3>3v3 决赛评判席临时增补一名技术评委</h3>
+              <p>原定 5 人评判席，11-08 09:00 增至 6 人。新增评委为 2025 年该赛事亚军编舞指导。</p>
+              <div class="meta"><time datetime="2026-11-08">11-08 09:00</time><span>来源：赛事官微</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/algocon-1108/640/360" width="640" height="360" loading="lazy" alt="算法竞赛机房内多台显示器显示代码与排名榜">
+            <div class="body">
+              <span class="tag n">算法竞赛</span>
+              <h3>复赛第二场 T3 题面更正，数据范围上限下调</h3>
+              <p>11-08 08:20 题面 v2 把 n 的上限从 2×10⁵ 改为 1.2×10⁵，已提交代码不重测，但重判时按新限制。</p>
+              <div class="meta"><time datetime="2026-11-08">11-08 08:20</time><span>来源：赛题修订记录</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/esports-league-4/640/360" width="640" height="360" loading="lazy" alt="电竞比赛舞台灯光下两队选手隔屏对战，观众席暗处可见应援牌">
+            <div class="body">
+              <span class="tag">城市电竞联赛</span>
+              <h3>四强赛换用 1.14 版本，两队擅长的两个英雄被削</h3>
+              <p>联赛技术组 11-07 22:30 确认版本锁定 1.14。版本说明显示两个高出场英雄冷却各延长 2 秒。</p>
+              <div class="meta"><time datetime="2026-11-07">11-07 22:30</time><span>来源：联赛技术组</span></div>
+            </div>
+          </article>
+          <article class="pick">
+            <img src="https://picsum.photos/seed/modelplane-timing/640/360" width="640" height="360" loading="lazy" alt="青少年航模计时赛现场，选手在跑道边举着遥控器">
+            <div class="body">
+              <span class="tag g">航模计时赛</span>
+              <h3>计时赛因侧风推迟 40 分钟，首轮成绩按两次取快</h3>
+              <p>11-08 08:50 风速仪读数连续三次超过 6m/s，裁判组改为两轮取快。原定三次取平均作废。</p>
+              <div class="meta"><time datetime="2026-11-08">11-08 08:50</time><span>来源：裁判组口头通报</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="sec" id="feed" aria-labelledby="h-feed">
+        <div class="sec-h"><h2 id="h-feed">最新赛程与判罚更新</h2><span class="sub">11-07 至 11-08</span></div>
+        <ol class="feed">
+          <li>
+            <time datetime="2026-11-08T09:05">今天 09:05 · 机器人格斗</time>
+            <b>16 强首场双方配重公示</b>
+            <p>赤鳞 8.4kg、铁砧 8.9kg，两者均在 9kg 上限内。赛会同时公布上赛季两台机器的三次交手记录：赤鳞 2 胜 1 负。</p>
+          </li>
+          <li>
+            <time datetime="2026-11-08T08:50">今天 08:50 · 航模计时赛</time>
+            <b>侧风超标，首轮推迟</b>
+            <p>风速仪三次读数 6.2、6.5、6.1 m/s。裁判组改规则为首轮取两轮快成绩，第二轮改在 13:10 进行。</p>
+          </li>
+          <li>
+            <time datetime="2026-11-08T08:20">今天 08:20 · 算法竞赛</time>
+            <b>T3 题面更新至 v2</b>
+            <p>数据范围下调，修订记录里写明理由：T3 原限制下存在 O(n√n) 卡常通过的路径，影响区分度。</p>
+          </li>
+          <li>
+            <time datetime="2026-11-07T22:30">昨天 22:30 · 城市电竞联赛</time>
+            <b>四强赛版本锁定 1.14</b>
+            <p>技术组同时说明选手账号在 1.13 下的训练数据不计入赛前评估，两队需在 11-08 14:00 前重交阵容表。</p>
+          </li>
+          <li>
+            <time datetime="2026-11-07T21:15">昨天 21:15 · 机器人格斗</time>
+            <b>16 强签位重抽</b>
+            <p>抽签在 21:00 开始，21:15 出表。赛会说明重抽原因是原 B 组第三名退赛，签位空缺导致上下半区不均衡。</p>
+          </li>
+          <li>
+            <time datetime="2026-11-07T18:40">昨天 18:40 · 半程马拉松</time>
+            <b>12km 补给点前移</b>
+            <p>补给点从 11km 移到 9.5km，同时新增 14km 处一个应急饮水点。赛道里程牌在 11-07 夜间完成更换。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="sec" id="cats" aria-labelledby="h-cats">
+        <div class="sec-h"><h2 id="h-cats">频道分类入口</h2><span class="sub">按赛种查找</span></div>
+        <div class="catchips">
+          <a href="/#picks"><b>6</b> 机器人格斗赛况</a>
+          <a href="/#picks"><b>5</b> 半程马拉松补给</a>
+          <a href="/#picks"><b>4</b> 街舞对抗评判</a>
+          <a href="/#deep"><b>3</b> 算法竞赛题面</a>
+          <a href="/#picks"><b>4</b> 电竞版本调整</a>
+          <a href="/#picks"><b>2</b> 航模计时规则</a>
+        </div>
+        <div class="catgrid">
+          <div class="catcard"><h3>判罚申诉流程</h3><p>从场边登记到仲裁答复，各赛种时限不同：机器人格斗 15 分钟，街舞对抗 30 分钟。</p></div>
+          <div class="catcard"><h3>赛程变更通知</h3><p>赛道、签位、版本、题面四类改动的原始通告归档，标出发布账号与时间。</p></div>
+          <div class="catcard"><h3>选手退赛记录</h3><p>记录退赛原因与替补安排。11-07 机器人格斗 B 组第三名因电机烧毁退赛。</p></div>
+          <div class="catcard"><h3>装备与技术参数</h3><p>配重、电池、轮胎、外设的申报值，以及与上赛季的差值对照。</p></div>
+          <div class="catcard"><h3>观赛时间表</h3><p>按小时排列当日场次，含检录、候场、开赛、颁奖四个节点。</p></div>
+          <div class="catcard"><h3>赛事规则原文</h3><p>2025 与 2026 两版规则的条目级差异，逐条标注改动日期。</p></div>
+        </div>
+      </section>
+
+      <section class="sec" id="deep" aria-labelledby="h-deep">
+        <div class="sec-h"><h2 id="h-deep">深度解析：重抽签位与临时改点，谁的损失更大</h2><span class="sub">阅读约 8 分钟</span></div>
+        <article class="deep">
+          <div class="kicker">规则对照 · 判罚争议 · 赛程变更</div>
+          <h2 style="display:none">深度解析正文</h2>
+          <div class="dmeta"><span>作者：赛事观察组</span><span>2026-11-08 07:50</span><span>核对来源 7 处</span><span>评论区已开</span></div>
+          <p>把 11 月 7 日到 8 日的三类改动放在一起看，会发现一个共同结构：改动都是为了让赛程在物理条件或人数条件下「跑得下去」，代价被转移给了原本按旧规则备赛的一方。这个判断可以被反驳，反驳点在于——如果改动前没有人能完成比赛，所谓损失也就不成立。</p>
+
+          <h3>一、重抽签位的直接成本：赤鳞多打一场硬仗</h3>
+          <p>原签表下，赤鳞最快在半决赛遇到铁砧；重抽后首轮即遇。两台机器上赛季三次交手，赤鳞 2 胜 1 负，但三场均打满 3 回合，单场平均耗时 6 分 40 秒。首轮提前相遇意味着赤鳞若晋级，后面还有两场要打，而赛事规则第 12 条规定：单台机器在同一比赛日内累计对战超 15 分钟，须在第 15 分钟后的下一场前提交电机温度检测记录。</p>
+          <p>赤鳞操作员在 11-07 22:04 的直播里说，备用电机只有一组，「如果首轮打满三回合，第二轮就要降配重」。这句话是可核对的：公开的 16 强装备申报表里，赤鳞申报电机 2 组、配重块 3 块，铁砧申报电机 3 组、配重块 2 块。铁砧的冗余更厚。</p>
+          <div class="pull">先耗一轮硬仗的那一方，损失不在胜负概率，而在后续场次的装备余量。签表重抽当天，赤鳞的申报备件数量是 16 强里倒数第三。</div>
+
+          <h3>二、赛程与规则改动前后对照</h3>
+          <table class="cmp">
+            <caption>11-07 至 11-08 三项关键改动的数字对照</caption>
+            <thead><tr><th>项目</th><th>改动前</th><th>改动后</th><th>生效时间</th></tr></thead>
+            <tbody>
+              <tr><td>机器人格斗签位</td><td>A 组头名 vs B 组第二不在首轮</td><td>首轮直接对阵</td><td>11-07 21:15</td></tr>
+              <tr><td>半马 12km 补给点</td><td>11km 处</td><td>9.5km 处</td><td>11-07 18:40</td></tr>
+              <tr><td>航模计时赛首轮</td><td>三次取平均</td><td>两次取快</td><td>11-08 08:50</td></tr>
+              <tr><td>算法竞赛 T3 数据范围</td><td>n ≤ 2×10⁵</td><td>n ≤ 1.2×10⁵</td><td>11-08 08:20</td></tr>
+            </tbody>
+          </table>
+          <p>四项改动里，补给点前移的影响面最大：它不改变名次，却改变参赛者的补水节奏。9.5km 与 11km 相差 1.5km，按 5 分 30 秒配速约 8 分钟。原计划在 11km 补水的选手，需要在 9.5km 前就完成第一次取水。组委会通告里没有给出建议配速调整，这部分留给了选手自行判断。</p>
+
+          <h3>三、说法差异：赛会说「均衡」，选手指「针对」</h3>
+          <p>赛会 11-07 公告写的是「因 B 组第三名退赛，为使上下半区人数一致，重新抽签」。选手侧的表述不同：赤鳞操作员说「重抽前没人征询过我们」，铁砧教练 11-07 22:18 在采访里说「对我们也是新签，不存在谁占便宜」。两种说法并不直接冲突，但都没有回答一个问题——为什么不在抽签前就把退赛导致的空缺处理掉。赛会规则第 7 条只写了「签位空缺由赛会补位」，没有规定补位必须在抽签前完成。</p>
+          <div class="factcheck">
+            <h4>把判断拆成可核对项</h4>
+            <ol>
+              <li>赛会是否在 21:00 抽签前知晓退赛？公告称「11-07 16:30 收到退赛申请」，时间上早于抽签。</li>
+              <li>重抽是否有书面依据？规则第 7 条「补位」字样，但未规定重抽。</li>
+              <li>参赛方是否被征询？赤鳞称未收到征询，铁砧称收到通知但未提征询。</li>
+              <li>是否影响已售门票或转播？赛会未公布相关调整。</li>
+            </ol>
+          </div>
+
+          <h3>四、规则前后变化：应急条款从「可」变成「应当」</h3>
+          <p>2025 版赛事手册第 9 条写的是「恶劣天气下裁判组可调整计时方式」；2026 版改为「风速连续三次超过 6m/s 时，裁判组应当调整计时方式并于当场公示」。两个字的变化，把裁量权变成了义务。11-08 08:50 航模计时赛的改动，正是这条新规第一次被触发。裁判组当场口头通报，但没有同步书面公示，程序上是半完成的。</p>
+          <p>可以提出的具体判断是：新规把「应当」写清楚了，却没写公示的时限和载体。11-08 的两次改动（风速、题面数据范围）分别在 08:20 和 08:50 发布，一个走线上修订记录，一个走口头通报，同一赛事日内两种发布形态并存。这对后续申诉不利，因为口头通报无法回查原始措辞。</p>
+
+          <h3>五、谁在承担改动的成本</h3>
+          <p>半马选手承担的是节奏成本，机器人格斗承担的是装备成本，算法竞赛承担的是已写代码的沉没成本。三类成本里，只有算法竞赛的改动用「重判按新限制」做了部分补偿——已经通过旧限制的代码不重测，但重判时按新范围。这条补偿写在修订记录第 3 行，没写进选手须知。</p>
+          <p>电竞这边，版本从 1.13 升到 1.14 后，两个高出场英雄冷却各延长 2 秒，两队需在 11-08 14:00 前重交阵容表。技术组的说明是「联赛沿用赛事方统一版本」，没有单独评估版本变动对四强队伍的影响。四强里有一支队伍在 1.13 下的胜率是 71%，1.14 测试赛的三场里两场落败，样本虽小，但方向明确。</p>
+        </article>
+      </section>
+
+      <section class="sec" id="guide" aria-labelledby="h-guide">
+        <div class="sec-h"><h2 id="h-guide">现场观赛与爆料核对指南</h2><span class="sub">5 步</span></div>
+        <ol class="steps">
+          <li><h3>先看赛场公告板时间戳</h3><p>机器人格斗的公告板在入口右侧，纸质通告盖有赛会章并写发布时间。线上账号发布晚于纸质 5 到 20 分钟，两者不一致时以纸质为准。</p></li>
+          <li><h3>核对签表版本号</h3><p>重抽后的签表右上角有 v2 标记。11-07 之前的 v1 签表仍贴在旧位置，未撕除，容易误读。</p></li>
+          <li><h3>补给点位置看里程牌，不看旧地图</h3><p>半马 12km 补给点已移到 9.5km。赛道地图在 11-07 夜间重印，现场发放的纸质图右下角有「11-07 修订」字样。</p></li>
+          <li><h3>计时规则改动要问公示载体</h3><p>航模计时赛的两次取快规则目前只有口头通报。申请书面确认可到裁判席登记，登记后 30 分钟内给答复。</p></li>
+          <li><h3>电竞版本以客户端为准</h3><p>四强赛锁定 1.14，客户端登录页显示的版本号即为准。训练账号仍在 1.13 的，数据不计入赛前评估。</p></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="faq" aria-labelledby="h-faq">
+        <div class="sec-h"><h2 id="h-faq">赛事爆料常见问题</h2><span class="sub">7 问</span></div>
+        <div class="faq">
+          <details>
+            <summary>机器人格斗重抽签位后，原来的对阵记录还算数吗？</summary>
+            <div class="ans"><p>算数，但只作为历史交手参考。16 强签位重抽不改变 2025 赛季三次交手的记录，赤鳞 2 胜 1 负仍有效。赛会在 11-07 21:15 公告里明确写了「历史战绩不作为本轮种子依据」。</p></div>
+          </details>
+          <details>
+            <summary>半程马拉松 12km 补给点为什么从 11km 移到 9.5km？</summary>
+            <div class="ans"><p>10.8km 处有道路施工围挡，原 11km 补给桌无法摆放。组委会 11-07 18:40 通告给出两个替代动作：补给点前移到 9.5km，14km 处新增应急饮水点。</p></div>
+          </details>
+          <details>
+            <summary>算法竞赛 T3 题面改数据范围，已提交的代码会被判错吗？</summary>
+            <div class="ans"><p>已提交代码不重测，但重判时按新上限 1.2×10⁵ 判定。修订记录第 3 行写的是「重判按 v2 数据范围」，没有写「重测」。这两者差别在于：旧代码里按 2×10⁵ 设计的数组仍能通过编译，只是在新数据上可能超时。</p></div>
+          </details>
+          <details>
+            <summary>街舞 3v3 决赛评判席从 5 人增到 6 人，如何计分？</summary>
+            <div class="ans"><p>6 名评委各投一票，去掉一个最高分和一个最低分后取中间四票的多数。这条在 11-08 09:00 的官微说明里写了，但没写增补评委的具体投票权重是否与其他 5 人一致。现场记者提问后，赛事方口头确认权重一致。</p></div>
+          </details>
+          <details>
+            <summary>航模计时赛改成两次取快，对成绩有什么影响？</summary>
+            <div class="ans"><p>两次取快比三次取平均更宽容，单次失误的代价被压低。以 11-08 首轮为例，一名选手第一次 42.6 秒、第二次 39.1 秒，按旧规则平均 40.85 秒，按新规则记 39.1 秒。差 1.75 秒，在航模计时赛里足以改变名次。</p></div>
+          </details>
+          <details>
+            <summary>不现场观赛，能在哪里核对赛程变更的原始通告？</summary>
+            <div class="ans"><p>机器人格斗看赛会公告板的纸质版，半马看组委会通告页，算法竞赛看赛题修订记录，电竞看联赛技术组账号。四类通告的发布时间都在 11-07 到 11-08 之间，可逐条比对措辞。街舞与航模目前只有口头或官微口径，书面归档尚不完整。</p></div>
+          </details>
+          <details>
+            <summary>选手退赛后替补怎么安排，会影响已购票观众吗？</summary>
+            <div class="ans"><p>机器人格斗 B 组第三名 11-07 16:30 提交退赛申请，原因写的是电机烧毁，未提供维修时间。赛会未公布替补名单，而是以重抽签位处理，16 强仍为 16 台。已购票观众不受场次数量影响，但首轮对阵改变，观赛重点随之变化。</p></div>
+          </details>
+        </div>
+      </section>
+
+      <section class="sec" id="comments" aria-labelledby="h-comments">
+        <div class="sec-h"><h2 id="h-comments">观众与选手区评论</h2><span class="sub">摘录 6 条</span></div>
+        <div class="cmts">
+          <article class="cmt">
+            <header><span class="av">林</span><span class="who">林间看台</span><time datetime="2026-11-08">今天 09:12</time></header>
+            <p>赤鳞首轮打铁砧，配重 8.4 对 8.9，差 0.5kg 在格斗里不算大，但电机只有两组，第二场真可能降配重。</p>
+            <span class="ref">指向：赤鳞 × 铁砧 16 强对阵</span>
+          </article>
+          <article class="cmt warn">
+            <header><span class="av">周</span><span class="who">周三跑量</span><time datetime="2026-11-08">今天 08:58</time></header>
+            <p>补给点前移这种事，通告发得太晚。18:40 才说，很多人 19:00 已经按 11km 补水排了节奏。建议下次把建议配速一起给。</p>
+            <span class="ref">指向：半马 12km 补给点前移</span>
+          </article>
+          <article class="cmt">
+            <header><span class="av">K</span><span class="who">K 线之外</span><time datetime="2026-11-08">今天 09:20</time></header>
+            <p>T3 把上限从 2e5 改到 1.2e5，卡常路径被堵了，这个方向没问题。但「不重测」和「重判按新范围」是两句不同的话，评论区已经有人混着用。</p>
+            <span class="ref">指向：算法竞赛 T3 题面 v2</span>
+          </article>
+          <article class="cmt">
+            <header><span class="av">阿</span><span class="who">阿岚不跳舞</span><time datetime="2026-11-08">今天 09:33</time></header>
+            <p>评判席加到 6 人，去掉最高最低取中间四票，等于把极端打分压掉。这规则对技术型队伍更友好，但编舞分怎么算没讲清。</p>
+            <span class="ref">指向：街舞 3v3 评判席增补</span>
+          </article>
+          <article class="cmt warn">
+            <header><span class="av">风</span><span class="who">风里测速</span><time datetime="2026-11-08">今天 09:41</time></header>
+            <p>航模那次口头通报我不太认。风速 6.2、6.5、6.1 三次读数，触发「应当」条款，但公示只有口头，没法回查原话。申诉要找谁？</p>
+            <span class="ref">指向：航模计时赛首轮改规则</span>
+          </article>
+          <article class="cmt">
+            <header><span class="av">老</span><span class="who">老棋摊</span><time datetime="2026-11-08">今天 09:47</time></header>
+            <p>电竞换 1.14 这件事，技术组说沿用统一版本，可四强里那支队伍 1.13 胜率 71%，测试赛三场两负。样本小是事实，但不能当没发生。</p>
+            <span class="ref">指向：城市电竞联赛版本锁定</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="sec" id="news" aria-labelledby="h-news">
+        <div class="sec-h"><h2 id="h-news">相关赛事资讯</h2><span class="sub">6 条</span></div>
+        <ul class="news">
+          <li><time datetime="2026-11-08">11-08</time><div><b>城市机器人格斗赛 16 强开赛时间确认 09:00</b><br><span>赛会公告板 08:15 贴出，与抽签表 v2 一致。</span></div></li>
+          <li><time datetime="2026-11-08">11-08</time><div><b>算法竞赛复赛第二场 08:30 开赛，T3 题面 v2 已下发</b><br><span>修订记录第 1 至 5 行列出全部改动。</span></div></li>
+          <li><time datetime="2026-11-07">11-07</time><div><b>街舞 3v3 城市对抗决赛名单确定 8 队</b><br><span>名单在赛事官微 20:40 发布，含编舞指导姓名。</span></div></li>
+          <li><time datetime="2026-11-07">11-07</time><div><b>环湖半程马拉松 12km 补给点调整通告全文</b><br><span>通告含施工围挡照片与里程牌更换说明。</span></div></li>
+          <li><time datetime="2026-11-07">11-07</time><div><b>城市电竞联赛四强赛阵容表提交截止 11-08 14:00</b><br><span>技术组要求按 1.14 版本重交，原表作废。</span></div></li>
+          <li><time datetime="2026-11-07">11-07</time><div><b>青少年航模计时赛第二轮机位抽签结果</b><br><span>抽签在 21:30 完成，机位表贴在裁判席左侧。</span></div></li>
+        </ul>
+      </section>
+
+      <section class="sec" id="rank" aria-labelledby="h-rank">
+        <div class="sec-h"><h2 id="h-rank">今日爆料可信度分层</h2><span class="sub">按来源可回查程度</span></div>
+        <ol class="rank">
+          <li><div><b>机器人格斗签位重抽</b><i>纸质公告 + 线上账号，时间戳一致</i></div><em>A 级</em></li>
+          <li><div><b>半马 12km 补给点前移</b><i>组委会通告全文，含施工照片</i></div><em>A 级</em></li>
+          <li><div><b>算法竞赛 T3 题面 v2</b><i>修订记录逐行可查</i></div><em>A 级</em></li>
+          <li><div><b>电竞四强赛版本锁定 1.14</b><i>技术组账号发布，客户端可验证</i></div><em>B 级</em></li>
+          <li><div><b>街舞评判席增至 6 人</b><i>官微说明 + 口头确认权重</i></div><em>B 级</em></li>
+          <li><div><b>航模计时改两次取快</b><i>仅口头通报，书面未归档</i></div><em>C 级</em></li>
+        </ol>
+      </section>
+
+      <section class="sec" id="rectags" aria-labelledby="h-rectags">
+        <div class="sec-h"><h2 id="h-rectags">相关推荐</h2><span class="sub">按搜索词</span></div>
+        <div class="rectags">
+          <a href="/#deep">机器人格斗判罚规则对照</a>
+          <a href="/#feed">半程马拉松补给点变更</a>
+          <a href="/#faq">算法竞赛题面数据范围</a>
+          <a href="/#deep">街舞 3v3 评判计分方式</a>
+          <a href="/#picks">电竞版本更新影响</a>
+          <a href="/#guide">航模计时赛风速规则</a>
+          <a href="/#rank">赛事爆料可信度分层</a>
+          <a href="/#comments">选手退赛替补安排</a>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="side" aria-label="侧栏">
+      <nav class="panel" aria-labelledby="side-nav-h">
+        <h3 id="side-nav-h">本页栏目</h3>
+        <ul class="sidenav">
+          <li><a href="/#overview">赛事概览</a></li>
+          <li><a href="/#picks">精选爆料</a></li>
+          <li><a href="/#feed">今日更新</a></li>
+          <li><a href="/#cats">频道分类</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">观赛指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">观众评论</a></li>
+          <li><a href="/#rank">可信度分层</a></li>
+        </ul>
+      </nav>
+      <div class="panel">
+        <h2>当前热查条目</h2>
+        <ul class="hotlist">
+          <li><span class="n">1</span><a href="/#picks">赤鳞 vs 铁砧</a><time>09:05</time></li>
+          <li><span class="n">2</span><a href="/#feed">半马 9.5km 补给</a><time>08:40</time></li>
+          <li><span class="n">3</span><a href="/#deep">T3 数据范围</a><time>08:20</time></li>
+          <li><span class="n">4</span><a href="/#picks">1.14 版本改动</a><time>22:30</time></li>
+          <li><span class="n">5</span><a href="/#faq">航模两次取快</a><time>08:50</time></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>现场口径</h2>
+        <div class="quote">“重抽前没人征询过我们。备用电机只有一组，首轮打满三回合，第二轮就得降配重。”<b>——赤鳞操作员，11-07 22:04 直播</b></div>
+      </div>
+      <div class="panel">
+        <h2>更新时间</h2>
+        <p style="font-size:13px;margin:0;color:var(--ink-2)">正文最近可核对更新：11-07 22:30 电竞版本锁定；11-08 08:20 算法题面 v2；11-08 09:05 机器人格斗配重公示。</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <div class="fbrand">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1d4a5e"/><path d="M14 44 L26 22 L34 36 L42 18 L50 44" fill="none" stroke="#f2b544" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <strong>每日大赛今日爆料聚集地</strong>
+        </div>
+        <p>以赛场公告板、官方账号与赛题修订记录为核对底本，逐条标注时间与来源方，把当天能查到的改动摊开排。</p>
+      </div>
+      <div>
+        <h3>赛事频道</h3>
+        <ul>
+          <li><a href="/#picks">机器人格斗赛况</a></li>
+          <li><a href="/#picks">半程马拉松补给</a></li>
+          <li><a href="/#picks">街舞对抗评判</a></li>
+          <li><a href="/#picks">电竞版本调整</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>规则与指南</h3>
+        <ul>
+          <li><a href="/#deep">判罚规则对照</a></li>
+          <li><a href="/#guide">观赛核对指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#rank">可信度分层</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>互动</h3>
+        <ul>
+          <li><a href="/#comments">观众评论</a></li>
+          <li><a href="/#feed">提交赛程线索</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#rectags">相关推荐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbottom">
+      <span>页面示例数据：赛事名、选手名、配重与时间均为演示条目，实际以赛场公告为准。</span>
+      <span>更新时间 2026-11-08 09:50<span class="dot">·</span>内容核对 7 处<span class="dot">·</span>© 2026 赛事爆料整理</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"每日大赛今日爆料聚集地","description":"汇总马拉松、机器人格斗、街舞、编程与电竞等赛事的赛程变更、判罚争议与选手动态，附规则对照与观赛指南。","inLanguage":"zh-CN"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"机器人格斗重抽签位后，原来的对阵记录还算数吗？","acceptedAnswer":{"@type":"Answer","text":"算数，但只作为历史交手参考。16 强签位重抽不改变 2025 赛季三次交手的记录，赤鳞 2 胜 1 负仍有效。赛会在 11-07 21:15 公告里明确写了「历史战绩不作为本轮种子依据」。"}},
+{"@type":"Question","name":"半程马拉松 12km 补给点为什么从 11km 移到 9.5km？","acceptedAnswer":{"@type":"Answer","text":"10.8km 处有道路施工围挡，原 11km 补给桌无法摆放。组委会 11-07 18:40 通告给出两个替代动作：补给点前移到 9.5km，14km 处新增应急饮水点。"}},
+{"@type":"Question","name":"算法竞赛 T3 题面改数据范围，已提交的代码会被判错吗？","acceptedAnswer":{"@type":"Answer","text":"已提交代码不重测，但重判时按新上限 1.2×10⁵ 判定。修订记录第 3 行写的是「重判按 v2 数据范围」，没有写「重测」。"}},
+{"@type":"Question","name":"街舞 3v3 决赛评判席从 5 人增到 6 人，如何计分？","acceptedAnswer":{"@type":"Answer","text":"6 名评委各投一票，去掉一个最高分和一个最低分后取中间四票的多数。11-08 09:00 的官微说明已写明，赛事方口头确认增补评委投票权重一致。"}},
+{"@type":"Question","name":"航模计时赛改成两次取快，对成绩有什么影响？","acceptedAnswer":{"@type":"Answer","text":"两次取快比三次取平均更宽容，单次失误的代价被压低。以 11-08 首轮为例，一次 42.6 秒、一次 39.1 秒，按旧规则平均 40.85 秒，按新规则记 39.1 秒。"}},
+{"@type":"Question","name":"不现场观赛，能在哪里核对赛程变更的原始通告？","acceptedAnswer":{"@type":"Answer","text":"机器人格斗看赛会公告板纸质版，半马看组委会通告页，算法竞赛看赛题修订记录，电竞看联赛技术组账号。街舞与航模目前只有口头或官微口径。"}},
+{"@type":"Question","name":"选手退赛后替补怎么安排，会影响已购票观众吗？","acceptedAnswer":{"@type":"Answer","text":"机器人格斗 B 组第三名 11-07 16:30 提交退赛申请，原因写的是电机烧毁。赛会未公布替补名单，而是以重抽签位处理，16 强仍为 16 台。"}}
+]}
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('menubtn');
+  var nav=document.getElementById('mainnav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=1000){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&nav.classList.contains('open')){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+        btn.focus();
+      }
+    });
+  }
+
+  // 搜索
+  var q=document.getElementById('q'),msg=document.getElementById('qmsg');
+  var items=[].slice.call(document.querySelectorAll('#main h1, #main h2, #main h3, #main b'));
+  if(q&&msg){
+    var timer=null;
+    q.addEventListener('input',function(){
+      clearTimeout(timer);
+      timer=setTimeout(function(){
+        var v=q.value.trim();
+        if(!v){msg.classList.remove('on');msg.textContent='';return;}
+        var hits=[];
+        for(var i=0;i<items.length&&hits.length<5;i++){
+          if(items[i].textContent.indexOf(v)>-1){hits.push(items[i].textContent.trim());}
+        }
+        msg.classList.add('on');
+        if(hits.length===0){msg.textContent='没有找到「'+v+'」相关条目，可换用赛种或选手名。';}
+        else{msg.textContent='找到 '+hits.length+' 条：'+hits.join(' / ');}
+      },180);
+    });
+    q.addEventListener('keydown',function(e){
+      if(e.key==='Enter'&&msg.classList.contains('on')){
+        var v=q.value.trim();
+        if(!v)return;
+        var found=null;
+        for(var i=0;i<items.length;i++){
+          if(items[i].textContent.indexOf(v)>-1){found=items[i];break;}
+        }
+        if(found){
+          var sec=found.closest('section');
+          if(sec&&sec.id){location.hash='#'+sec.id;}
+        }
+      }
+    });
+  }
+
+  // 回到顶部
+  var top=document.getElementById('totop');
+  var onScroll=function(){
+    if(window.scrollY>520){top.classList.add('on');}else{top.classList.remove('on');}
+  };
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  if(top){top.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+    var b=document.querySelector('.brand');if(b)b.focus();
+  });}
+
+  // 侧栏滚动高亮
+  var links=[].slice.call(document.querySelectorAll('.sidenav a'));
+  var secs=links.map(function(a){
+    var id=a.getAttribute('href').split('#')[1];
+    return document.getElementById(id);
+  }).filter(Boolean);
+  if('IntersectionObserver' in window&&secs.length){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting)return;
+        links.forEach(function(a){a.classList.remove('active');});
+        var id=en.target.id;
+        var cur=links.filter(function(a){return a.getAttribute('href').split('#')[1]===id;})[0];
+        if(cur)cur.classList.add('active');
+      });
+    },{rootMargin:'-120px 0px -60% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
+</body>
+  </html>
